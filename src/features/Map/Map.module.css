@@ -1,0 +1,8 @@
+.map {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(226, 246, 255);
+  z-index: 0;
+  color: #008ada;
+}
