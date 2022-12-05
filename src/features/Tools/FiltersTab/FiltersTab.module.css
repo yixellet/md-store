@@ -1,0 +1,76 @@
+.new_md_button {
+  color: rgb(0, 0, 0);
+  background-color: rgb(181, 212, 41);
+  border: none;
+  font-family: 'Roboto';
+  font-weight: 700;
+  margin: 20px;
+  padding: 10px;
+  height: 40px;
+  width: calc(100% - 40px);
+  cursor: pointer;
+}
+
+.new_md_button:hover {
+  background-color: rgb(217, 247, 88);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
+}
+
+.new_md_button:active {
+  background-color: rgb(141, 165, 32);
+  box-shadow: none;
+}
+
+.filters_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 40px);
+  background-color: rgba(78, 88, 60, 0.925);
+}
+
+.filters_form {
+  width: 100%;
+  min-height: 100px;
+}
+
+.fieldset {
+  border: none;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.fieldset_legend {
+  color: rgb(206, 206, 206);
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.checkbox_wrapper {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  padding: 0;
+  line-height: 0;
+  color: #fff;
+}
+
+.checkbox_label {
+  color: rgb(255, 255, 255);
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 13px;
+  margin-left: 15px;
+}
+
+.input_date {
+  color: rgb(255, 255, 255);
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 13px;
+  background-color: rgba(0, 0, 0, 0);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px #fff;
+}

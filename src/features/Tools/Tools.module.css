@@ -1,8 +1,8 @@
 .tools_container {
   width: 450px;
   min-width: 250px;
-  height: 90%;
-  position: fixed;
+  height: calc(100% - 20px);
+  position: absolute;
   top: 10px;
   left: 10px;
   background-color: rgba(32, 36, 25, 0.925);
@@ -16,29 +16,7 @@
   font-family: 'Roboto';
   font-weight: 400;
   margin: 20px;
-}
-
-.new_md_button {
-  color: rgb(0, 0, 0);
-  background-color: rgb(181, 212, 41);
-  border: none;
-  font-family: 'Roboto';
-  font-weight: 700;
-  margin: 20px;
-  padding: 10px;
   height: 40px;
-  width: calc(100% - 40px);
-  cursor: pointer;
-}
-
-.new_md_button:hover {
-  background-color: rgb(217, 247, 88);
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
-}
-
-.new_md_button:active {
-  background-color: rgb(141, 165, 32);
-  box-shadow: none;
 }
 
 .form {
@@ -51,4 +29,47 @@
   height: 40px;
   font-family: 'Roboto';
   font-weight: 400;
+  padding-left: 20px;
+}
+
+.tabs_wrapper {
+  background-color: rgba(78, 88, 60, 0.925);
+  width: 100%;
+  height: calc(100% - 140px);
+  position: absolute;
+}
+
+.tabLabels_wrapper {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 14px;
+  cursor: pointer;;
+}
+
+.tabLabelActive {
+  width: calc(100% / 3);
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabLabel {
+  width: calc(100% / 3);
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(32, 36, 25, 0.925);
 }
