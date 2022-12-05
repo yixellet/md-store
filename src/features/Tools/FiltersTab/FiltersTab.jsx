@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SubmitButton from '../SubmitButton/SubmitButton';
+
 import styles from './FiltersTab.module.css'
 
 function FiltersTab() {
@@ -34,7 +36,7 @@ function FiltersTab() {
         <div className={styles.checkbox_wrapper}><input type="date" className={styles.input_date}/> - <input type="date" className={styles.input_date} /></div>
       </fieldset>
       </div>
-      <input type="submit" className={styles.new_md_button} value='Поиск ...' />
+      <SubmitButton />
     </form>
   )
 };

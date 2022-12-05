@@ -1,0 +1,22 @@
+.submit_button {
+  color: rgb(0, 0, 0);
+  background-color: rgb(181, 212, 41);
+  border: none;
+  font-family: 'Roboto';
+  font-weight: 700;
+  margin: 20px;
+  padding: 10px;
+  height: 40px;
+  width: calc(100% - 40px);
+  cursor: pointer;
+}
+
+.submit_button:hover {
+  background-color: rgb(217, 247, 88);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
+}
+
+.submit_button:active {
+  background-color: rgb(141, 165, 32);
+  box-shadow: none;
+}

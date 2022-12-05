@@ -1,6 +1,7 @@
 import React from 'react';
 import FiltersTab from './FiltersTab/FiltersTab';
 import MdList from './MdList/MdList';
+import NewMd from './NewMd/NewMd';
 
 import styles from './Tools.module.css'
 
@@ -17,7 +18,7 @@ function Tools() {
           <li className={styles.tabLabel}><p>Метаданные</p></li>
           <li className={styles.tabLabel}><p>Новая запись</p></li>
         </ul>
-        <MdList />
+        <NewMd />
       </div>
     </div>
   )
