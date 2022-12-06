@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useGetGroupsQuery } from '../../../api/mdApi';
 import InputSelect from './InputSelect/InputSelect';
 import InputText from './InputText/InputText';
 import SubmitButton from '../SubmitButton/SubmitButton';
@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 function NewMd() {
 
   const props = useSelector((state) => state.app.mdProps)
+  const { data: types, isSuccess } = useGetGroupsQuery();
   return (
     <form className={styles.newMdForm}>
       <div className={styles.form_fields}>

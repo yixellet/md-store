@@ -7,7 +7,7 @@ import styles from './FiltersTab.module.css'
 
 function FiltersTab() {
 
-  const { data } = useGetGroupsQuery();
+  const { data, isSuccess } = useGetGroupsQuery();
   
   return (
     <form className={styles.filters_wrapper}>
@@ -15,6 +15,7 @@ function FiltersTab() {
       <fieldset className={styles.fieldset}>
         <legend className={styles.fieldset_legend}>Типы данных</legend>
         {
+          isSuccess &&
           data.map((item) => {
             return <div key={item.id} className={styles.checkbox_wrapper}>
               <input type='checkbox' id={item.controller} name={item.controller} value={item.id} />
