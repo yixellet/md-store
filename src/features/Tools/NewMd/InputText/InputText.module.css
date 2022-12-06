@@ -1,0 +1,13 @@
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+  margin-bottom: 20px;
+}
+
+.text_input {
+  height: 30px;
+  font-size: 13px;
+  padding: 0 10px;
+  font-weight: 700;
+}

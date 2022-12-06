@@ -52,24 +52,3 @@
   font-size: 14px;
   cursor: pointer;;
 }
-
-.tabLabelActive {
-  width: calc(100% / 3);
-  height: 40px;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.tabLabel {
-  width: calc(100% / 3);
-  height: 40px;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(32, 36, 25, 0.925);
-}
