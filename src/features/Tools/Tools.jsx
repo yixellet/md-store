@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import NewCpForm from '../NewCpForm/NewCpForm';
 import FiltersTab from './FiltersTab/FiltersTab';
 import MdList from './MdList/MdList';
 import NewMd from './NewMd/NewMd';
@@ -42,6 +43,7 @@ function Tools(props) {
         </ul>
         {panel}
       </div>
+      <NewCpForm />
     </div>
   )
 };

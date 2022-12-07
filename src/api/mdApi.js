@@ -24,6 +24,14 @@ export const mdApi = createApi({
       query: () => 'regions',
       transformResponse: (responseData) => responseData.data,
     }),
+    getFederalDistricts: builder.query({
+      query: () => 'federaldistricts',
+      transformResponse: (responseData) => responseData.data,
+    }),
+    getRegionsByFederalDistrict: builder.query({
+      query: (district) => `regionbyfederaldistrict?district=${district}`,
+      transformResponse: (responseData) => responseData.data,
+    }),
     getScales: builder.query({
       query: () => 'scales',
       transformResponse: (responseData) => responseData.data,
@@ -36,8 +44,16 @@ export const mdApi = createApi({
       query: () => 'storage_formats',
       transformResponse: (responseData) => responseData.data,
     }),
+    getStorageFormatsByGroup: builder.query({
+      query: (group) => `storageformatsbygroup?group=${group}`,
+      transformResponse: (responseData) => responseData.data,
+    }),
     getSubtypes: builder.query({
       query: () => 'subtypes',
+      transformResponse: (responseData) => responseData.data,
+    }),
+    getSubtypesByGroup: builder.query({
+      query: (group) => `subtypesbygroup?group=${group}`,
       transformResponse: (responseData) => responseData.data,
     })
   }),
@@ -49,8 +65,12 @@ export const {
   useGetHeightSystemsQuery,
   useGetReferenceSystemsQuery,
   useGetRegionsQuery,
+  useGetFederalDistrictsQuery,
+  useGetRegionsByFederalDistrictQuery,
   useGetScalesQuery,
   useGetSecretClassesQuery,
   useGetStorageFormatsQuery,
-  useGetSubtypesQuery
+  useGetSubtypesQuery,
+  useGetSubtypesByGroupQuery,
+  useGetStorageFormatsByGroupQuery
 } = mdApi;

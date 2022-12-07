@@ -1,0 +1,15 @@
+.newcp_form_wrapper {
+  position: fixed;
+  width: 1000px;
+  height: 700px;
+  z-index: 100;
+  background-color: rgba(78, 88, 60, 0.925);
+  left: calc((100% - 1000px) / 2);
+  top: calc((100% - 700px) / 2);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.301);
+  font-family: 'Roboto';
+}
+
+.newcp_header {
+  color: #fff;
+}
