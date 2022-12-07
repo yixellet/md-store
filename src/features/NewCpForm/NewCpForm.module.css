@@ -3,7 +3,7 @@
   width: 1000px;
   height: 700px;
   z-index: 100;
-  background-color: rgba(78, 88, 60, 0.925);
+  background-color: rgb(87, 97, 68);
   left: calc((100% - 1000px) / 2);
   top: calc((100% - 700px) / 2);
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.301);
@@ -12,4 +12,25 @@
 
 .newcp_header {
   color: #fff;
+  margin: 20px 40px;
+  font-weight: 300;
+}
+
+.type_radio_wrapper {
+  margin: 20px 40px;
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+}
+
+.type_radio_with_label {
+  margin-right: 60px;
+}
+
+.radio {
+  margin-right: 10px;
+}
+
+.newcp_form {
+  margin: 20px 40px;
 }
