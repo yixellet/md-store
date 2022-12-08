@@ -13,7 +13,7 @@ function PersonForm() {
     <form className={styles.newcp_form}>
       {
         Object.values(formContent).map((field) => {
-          return <InputText key={field.id} label={field.label} />
+          return <InputText key={field.id} label={field.label} data={field} />
         })
       }
       <SubmitButton value='Сохранить' />
