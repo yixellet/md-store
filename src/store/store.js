@@ -4,11 +4,13 @@ import { cpApi } from "../api/cpApi";
 import { mdApi } from "../api/mdApi";
 import appSlice from './reducers/appSlice';
 import newMdSlice from "./reducers/newMdSlice";
+import newCpSlice from "./reducers/newCpSlice";
 
 export const store = configureStore({
   reducer: {
     app: appSlice,
     newMd: newMdSlice,
+    newCp: newCpSlice,
     [mdApi.reducerPath]: mdApi.reducer,
     [cpApi.reducerPath]: cpApi.reducer,
   },
