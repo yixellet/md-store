@@ -24,21 +24,23 @@ function NewCpWrapper() {
   }
   
   return (
-    <div className={styles.newcp_form_wrapper}>
-      <h1 className={styles.newcp_header}>Новый контрагент</h1>
-      <div className={styles.type_radio_wrapper}>
-        {
-          Object.values(types).map((type) => {
-            return <div key={type.id} className={styles.type_radio_with_label}>
-                <input className={styles.radio} type="radio" id={`entity${type.id}`} 
-                       name="type" value={type.id} checked={type.id === activeCpType}
-                       onChange={() => {dispatch(setActiveCpType(type.id))}} />
-                <label htmlFor={`entity${type.id}`}>{type.name}</label>
-              </div>
-          })
-        }
+    <div className={styles.background}>
+      <div className={styles.newcp_form_wrapper}>
+        <h1 className={styles.newcp_header}>Новый контрагент</h1>
+        <div className={styles.type_radio_wrapper}>
+          {
+            Object.values(types).map((type) => {
+              return <div key={type.id} className={styles.type_radio_with_label}>
+                  <input className={styles.radio} type="radio" id={`entity${type.id}`} 
+                        name="type" value={type.id} checked={type.id === activeCpType}
+                        onChange={() => {dispatch(setActiveCpType(type.id))}} />
+                  <label htmlFor={`entity${type.id}`}>{type.name}</label>
+                </div>
+            })
+          }
+        </div>
+        {form}
       </div>
-      {form}
     </div>
   )
 };

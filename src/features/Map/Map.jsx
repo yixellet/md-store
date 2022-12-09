@@ -30,6 +30,8 @@ function Map() {
     map.setTarget(mapRef.current);
   }, [map]);
 
+  console.log(view.calculateExtent())
+
   return (
     <div ref={mapRef} className={styles.map} id="map">
 

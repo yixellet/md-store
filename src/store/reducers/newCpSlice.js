@@ -52,10 +52,13 @@ const newCpSlice = createSlice({
   reducers: {
     setActiveCpType: (state, action) => {
       state.activeCpType = action.payload
+    },
+    setPersonFieldValue: (state, action) => {
+      state.personFormFields[action.payload.id].value = action.payload.value
     }
-  }
+  },
 });
 
-export const { setActiveCpType } = newCpSlice.actions;
+export const { setActiveCpType, setPersonFieldValue } = newCpSlice.actions;
 
 export default newCpSlice.reducer;

@@ -1,12 +1,21 @@
-.newcp_form_wrapper {
+.background {
   position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(121, 121, 121, 0.87);
+}
+
+.newcp_form_wrapper {
   width: 1000px;
   height: 700px;
   z-index: 100;
   background-color: rgb(87, 97, 68);
-  left: calc((100% - 500px) / 2);
-  top: calc((100% - 700px) / 2);
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.301);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.664);
   font-family: 'Roboto';
 }
 

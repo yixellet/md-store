@@ -43,7 +43,7 @@ function Tools(props) {
         </ul>
         {panel}
       </div>
-      <NewCpWrapper />
+      
     </div>
   )
 };

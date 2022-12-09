@@ -8,6 +8,10 @@ export const cpApi = createApi({
       query: () => 'entities',
       transformResponse: (responseData) => responseData.data,
     }),
+    addPerson: builder.query({
+      query: (name, patronym, surname, inn, regaddress_ref, regaddress_text, postaddress_ref, postaddress_text) => 'addperson',
+      transformResponse: (responseData) => responseData.data,
+    }),
   }),
 });
 
