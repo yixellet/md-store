@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import dateFormatter from '../../../common/dateFormatter';
 import * as mdApi from '../../../api/mdApi';
 import InputSelect from './InputSelect/InputSelect';
 import InputText from './InputText/InputText';
@@ -23,6 +24,8 @@ function NewMd() {
   const [heightSystem, setHeightSystem] = useState('-1');
   const [district, setDistrict] = useState(203);
   const [region, setRegion] = useState('');
+  const dateNow = new Date();
+  const [objectCreateDate, setObjectCreateDate] = useState(dateFormatter(dateNow, '-'));
 
   const dispatch = useDispatch();
 
@@ -102,7 +105,7 @@ function NewMd() {
         }
         <fieldset className={styles.fieldset}>
           <legend>Даты</legend>
-          <InputDate label='Дата создания' name='objectcreatedat' />
+          <InputDate label='Дата создания' name='objectcreatedat' value={objectCreateDate} onChangeFunction={setObjectCreateDate} />
           <InputDate label='Дата обновления' name='objectchangedat' />
           <InputDate label='Дата состояния местности' name='areastatedate' />
           <InputDate label='Дата состояния местности максимальная' name='maxareastatedate' />

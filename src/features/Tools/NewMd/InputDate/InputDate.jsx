@@ -8,7 +8,10 @@ class InputDate extends React.Component {
     return (
       <div className={styles.input_wrapper}>
         <InputLabel name={this.props.label} for={this.props.name} />
-        <input type='date' name={this.props.name} id={this.props.name} className={styles.text_input} />
+        <input type='date' name={this.props.name} 
+               id={this.props.name}
+               value={this.props.value} className={styles.text_input}
+               onChange={event => this.props.onChangeFunction(event.target.value)} />
       </div>
     )
   }
