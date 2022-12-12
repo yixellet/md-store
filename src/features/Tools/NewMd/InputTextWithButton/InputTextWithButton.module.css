@@ -1,0 +1,42 @@
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input_with_button_wrapper {
+  width: 100%;
+}
+
+.plus_button {
+  width: 30px;
+  height: 30px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(181, 212, 41);
+  border: none;
+  font-family: 'Roboto';
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.plus_button:hover {
+  background-color: rgb(217, 247, 88);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
+}
+
+.plus_button:active {
+  background-color: rgb(141, 165, 32);
+  box-shadow: none;
+}
+
+.text_input {
+  width: calc(100% - 60px);
+  height: 30px;
+  padding: 0 10px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+}
