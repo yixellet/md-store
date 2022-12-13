@@ -56,9 +56,12 @@ export const mdApi = createApi({
       query: (group) => `subtypesbygroup?group=${group}`,
       transformResponse: (responseData) => responseData.data,
     }),
-    addMdDmap: builder.query({
-      query: (obj) => `addMd?nomenclature=${obj.nomenclature}&
-      scale=${obj.scale}`
+    addMdDmap: builder.mutation({
+      query: (md) => ({
+        url: '/addmetadata',
+        method: 'POST',
+        body: md
+      })
     })
   }),
 });
@@ -77,5 +80,5 @@ export const {
   useGetSubtypesQuery,
   useGetSubtypesByGroupQuery,
   useGetStorageFormatsByGroupQuery,
-  useAddMdDmapQuery
+  useAddMdDmapMutation
 } = mdApi;

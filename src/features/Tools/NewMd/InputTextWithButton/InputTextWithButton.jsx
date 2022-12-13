@@ -11,7 +11,7 @@ function InputTextWithButton(props) {
   
   return (
     <div className={styles.input_wrapper}>
-    <InputLabel name={props.label} for={props.name} />
+    <InputLabel name={props.label} for={props.name} isRequired={props.isRequired} />
       <div className={styles.input_with_button_wrapper}>
         <input type='text' 
               name={props.name} 

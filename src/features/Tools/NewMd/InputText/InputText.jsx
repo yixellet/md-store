@@ -6,7 +6,7 @@ function InputText(props) {
   
   return (
     <div className={styles.input_wrapper}>
-      <InputLabel name={props.label} for={props.name} />
+      <InputLabel name={props.label} for={props.name} isRequired={props.isRequired} />
       <input type='text' 
              name={props.name} 
              id={props.name} 

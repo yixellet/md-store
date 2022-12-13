@@ -57,17 +57,38 @@ function NewMd() {
   const { data: regions, isSuccess: regionsSuccess } = mdApi.useGetRegionsByFederalDistrictQuery(district);
   const { data: refsys, isSuccess: refsysSuccess } = mdApi.useGetReferenceSystemsQuery();
   const { data: heightsys, isSuccess: heightSuccess } = mdApi.useGetHeightSystemsQuery();
-  const { data: secretclass, isSuccess: secretSuccess } = mdApi.useGetSecretClassesQuery();
+  const { data: secretClasses, isSuccess: secretSuccess } = mdApi.useGetSecretClassesQuery();
   const { data: access, isSuccess: accessSuccess } = mdApi.useGetAccessConditionsQuery();
   const { data: entities, isSuccess: entitiesSuccess } = useGetAllEntitiesQuery();
+  const [addNewMd] = mdApi.useAddMdDmapMutation();
 
-  const obj = {
-    nomenclature: nomenclature,
-    scale: scale,
-  };
-
-  const handlerSubmit = (obj) => {
-    dispatch(mdApi.useAddMdDmapQuery(obj))
+  const handlerSubmit = async() => {
+    await addNewMd({
+      nomenclature,
+      scale,
+      objectQuantity,
+      location,
+      storageFormat,
+      maxAreaStateDate,
+      minScale,
+      areaStateDate,
+      objectCreateDate,
+      objectChangeDate,
+      name,
+      referenceSystem,
+      rightHolder,
+      creator,
+      secretClass,
+      extraRegionInfo,
+      comment,
+      accessCondition,
+      guid,
+      subtype,
+      region,
+      incomingDoc,
+      outgoingDoc,
+      geomWKT
+    }).unwrap()
   }
 
   return (
@@ -85,73 +106,74 @@ function NewMd() {
         }
         {
           stFormSuccess && 
-          <InputSelect label='Формат хранения' 
+          <InputSelect label='Формат хранения' isRequired={true}
                        name='storageformat' options={storageFormats} onChangeFunction={setStorageFormat} />
         }
         {
           type !== '12' &&
-          <InputText label='Номенклатура' name='nomenclature' value={nomenclature} onChangeFunction={setNomenclature} />          
+          <InputText label='Номенклатура' name='nomenclature' isRequired={false}
+                     value={nomenclature} onChangeFunction={setNomenclature} />          
         }
-        <InputText label='Название' name='name' value={name} onChangeFunction={setName} />
+        <InputText label='Название' name='name' value={name} isRequired={type !== '5'} onChangeFunction={setName} />
         {
           scalesSuccess && 
-          <InputSelect label='Масштаб' name='scale' 
+          <InputSelect label='Масштаб' name='scale' isRequired={type === '1' || type === '2'}
                        defaultOption={scale} options={scales} onChangeFunction={setScale} />
         }
         {
           scalesSuccess && 
-          <InputSelect label='Минимальный масштаб' name='minscale' 
+          <InputSelect label='Минимальный масштаб' name='minscale' isRequired={false}
                        defaultOption={minScale} options={scales} onChangeFunction={setMinScale} />
         }
         {
           (type !== '5' && type !== '12') &&
-          <InputText label='Количество объектов' name='objectquantity' 
+          <InputText label='Количество объектов' name='objectquantity' isRequired={false}
                      defaultOption={objectQuantity} onChangeFunction={setObjectQuantity} />
         }
-        <InputTextArea label='Комментарий' name='comment' 
+        <InputTextArea label='Комментарий' name='comment' isRequired={false}
                        value={comment} onChangeFunction={setComment} />
         <fieldset className={styles.fieldset}>
           <legend>Местонахождение территории</legend>
           {
             (districtSuccess && (type === '1' || type === '2' || type === '12')) && 
-            <InputSelect label='Федеральный округ' name='district' options={districts}
+            <InputSelect label='Федеральный округ' name='district' options={districts} isRequired={false}
                          defaultOption={district} onChangeFunction={setDistrict} />
           }
           {
             (regionsSuccess && (type === '1' || type === '2' || type === '12')) && 
-            <InputSelect label='Регион' name='region' options={regions}
+            <InputSelect label='Регион' name='region' options={regions} isRequired={false}
                          defaultOption={region} onChangeFunction={setRegion} />
           }
-          <InputTextArea label='Дополнительно' name='extraregioninfo' 
+          <InputTextArea label='Дополнительно' name='extraregioninfo' isRequired={false}
                          value={extraRegionInfo} onChangeFunction={setExtraRegionInfo} />
         </fieldset>
         {
           refsysSuccess && 
-          <InputSelect label='Система координат' name='referencesystem' options={refsys}
+          <InputSelect label='Система координат' name='referencesystem' options={refsys} isRequired={type !== 12}
                        defaultOption={referenceSystem} onChangeFunction={setReferenceSystem} />
         }
         {
           (heightSuccess && type === '5') && 
-          <InputSelect label='Система высот' name='heightsystem' options={heightsys}
+          <InputSelect label='Система высот' name='heightsystem' options={heightsys} isRequired={type === 5}
                        defaultOption={heightSystem} onChangeFunction={setHeightSystem} />
         }
         <fieldset className={styles.fieldset}>
           <legend>Даты</legend>
-          <InputDate label='Дата создания' name='objectcreatedat' 
+          <InputDate label='Дата создания' name='objectcreatedat' isRequired={type !== 3}
                      value={objectCreateDate} onChangeFunction={setObjectCreateDate} />
           {
             (type !== '5' && type !== '12') &&
-            <InputDate label='Дата обновления' name='objectchangedat' 
+            <InputDate label='Дата обновления' name='objectchangedat' isRequired={false}
                        value={objectChangeDate} onChangeFunction={setObjectChangeDate} />
           }
           {
             type !== '5' &&
-            <InputDate label='Дата состояния местности' name='areastatedate' 
+            <InputDate label='Дата состояния местности' name='areastatedate' isRequired={true}
                        value={areaStateDate} onChangeFunction={setAreaStateDate} />
           }
           {
             type !== '5' &&
-            <InputDate label='Дата состояния местности максимальная' name='maxareastatedate' 
+            <InputDate label='Дата состояния местности максимальная' name='maxareastatedate' isRequired={false}
                        value={maxAreaStateDate} onChangeFunction={setMaxAreaStateDate} />
           }
         </fieldset>
@@ -159,36 +181,36 @@ function NewMd() {
           <legend>Доступ к данным</legend>
           {
             secretSuccess &&
-            <InputSelect label='Гриф секретности' name='secret_class' options={secretclass}
+            <InputSelect label='Гриф секретности' name='secret_class' options={secretClasses} isRequired={true}
                          defaultOption={secretClass} onChangeFunction={setSecretClass} />
           }
           {
             accessSuccess &&
-            <InputSelect label='Условия доступа' name='access_conditions' options={access}
+            <InputSelect label='Условия доступа' name='access_conditions' options={access} isRequired={true}
                          defaultOption={accessCondition} onChangeFunction={setAccessConditions} />
           }
         </fieldset>
-        <InputText label='Системный идентификатор' name='guid' value={guid} onChangeFunction={setGuid} />
+        <InputText label='Системный идентификатор' name='guid' value={guid} onChangeFunction={setGuid} isRequired={false} />
         <fieldset className={styles.fieldset}>
           <legend>Контрагенты</legend>
           {
             (entitiesSuccess && type !== '3') &&
             <InputSelect label='Местонахождение данных' name='location' options={entities}
-                         onChangeFunction={setLocation} />
+                         onChangeFunction={setLocation} isRequired={true} />
           }
           {
             entitiesSuccess &&
             <InputSelect label='Организация-изготовитель' name='creator' options={entities}
-                         onChangeFunction={setCreator} />
+                         onChangeFunction={setCreator} isRequired={true} />
           }
           {
             entitiesSuccess &&
             <InputSelect label='Правообладатель' name='rightholder' options={entities}
-                         onChangeFunction={setRightHolder} />
+                         onChangeFunction={setRightHolder} isRequired={true} />
           }
         </fieldset>
-        <InputTextWithButton label='Входящий документ' name="incomingdoc" value={incomingDoc} onChangeFunction={setIncomingDoc} />
-        <InputTextWithButton label='Исходящий документ' name="outgoingdoc" value={outgoingDoc} onChangeFunction={setOutgoingDoc} />
+        <InputTextWithButton label='Входящий документ' name="incomingdoc" value={incomingDoc} isRequired={false} onChangeFunction={setIncomingDoc} />
+        <InputTextWithButton label='Исходящий документ' name="outgoingdoc" value={outgoingDoc} isRequired={false} onChangeFunction={setOutgoingDoc} />
         {
           (type !== '5') &&
           <fieldset className={styles.fieldset}>
@@ -208,7 +230,7 @@ function NewMd() {
           </fieldset>
         }
       </div>
-      <SubmitButton value='Сохранить' onClickFunction={() => handlerSubmit} />
+      <SubmitButton value='Сохранить' onClickFunction={handlerSubmit} />
     </form>
   )
 };
