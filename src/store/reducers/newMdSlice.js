@@ -15,7 +15,8 @@ const initialState = {
       id: 3,
       name: 'Скопировать WKT',
     },
-  }
+  },
+  isPaintingConfirmed: false,
 }
 
 const newMdSlice = createSlice({
@@ -25,9 +26,12 @@ const newMdSlice = createSlice({
     setGeometry: (state, action) => {
       state.geometry = action.payload
     },
+    confirmPainting: (state, action) => {
+      state.isPaintingConfirmed = action.payload
+    },
   }
 });
 
-export const { setGeometry } = newMdSlice.actions;
+export const { setGeometry, confirmPainting } = newMdSlice.actions;
 
 export default newMdSlice.reducer;

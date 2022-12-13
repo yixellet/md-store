@@ -5,6 +5,7 @@ import OSM from "ol/source/OSM";
 import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
 import styles from "./Map.module.css";
+import Layer from "./Layers/Layer";
 
 function Map() {
 
@@ -30,11 +31,11 @@ function Map() {
     map.setTarget(mapRef.current);
   }, [map]);
 
-  console.log(view.calculateExtent())
+  //console.log(view.calculateExtent())
 
   return (
     <div ref={mapRef} className={styles.map} id="map">
-
+      <Layer map={map} />
     </div>
   )
 };

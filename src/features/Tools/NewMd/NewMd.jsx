@@ -61,6 +61,15 @@ function NewMd() {
   const { data: access, isSuccess: accessSuccess } = mdApi.useGetAccessConditionsQuery();
   const { data: entities, isSuccess: entitiesSuccess } = useGetAllEntitiesQuery();
 
+  const obj = {
+    nomenclature: nomenclature,
+    scale: scale,
+  };
+
+  const handlerSubmit = (obj) => {
+    dispatch(mdApi.useAddMdDmapQuery(obj))
+  }
+
   return (
     <form className={styles.newMdForm}>
       <div className={styles.form_fields}>
@@ -199,7 +208,7 @@ function NewMd() {
           </fieldset>
         }
       </div>
-      <SubmitButton value='Сохранить' />
+      <SubmitButton value='Сохранить' onClickFunction={() => handlerSubmit} />
     </form>
   )
 };
