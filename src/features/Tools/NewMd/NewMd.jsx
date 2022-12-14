@@ -12,6 +12,7 @@ import { useGetAllEntitiesQuery } from '../../../api/cpApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { setGeometry } from '../../../store/reducers/newMdSlice';
 import InputTextWithButton from './InputTextWithButton/InputTextWithButton';
+import InputSubmit from './InputSubmit/InputSubmit';
 
 function NewMd() {
   const [type, setNewType] = useState('1');
@@ -230,7 +231,7 @@ function NewMd() {
           </fieldset>
         }
       </div>
-      <SubmitButton value='Сохранить' onClickFunction={handlerSubmit} />
+      <InputSubmit value='Сохранить' onClickFunction={handlerSubmit} />
     </form>
   )
 };

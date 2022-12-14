@@ -15,6 +15,16 @@ const initialState = {
       id: 3,
       label: 'Новая запись',
     }
+  },
+  newMdFormFields: {
+    1: {
+      id: 1,
+      name: 'nomenclature',
+      label: 'Номенклатура',
+      isVisible: [1, 2, 3, 5],
+      isRequired: [],
+      fieldType: 'text'
+    },
   }
 }
 
