@@ -1,0 +1,78 @@
+import React, { useState } from 'react';
+import { useGetLetterTypesQuery } from '../../api/mdApi';
+import InputDate from '../Tools/NewMd/InputDate/InputDate';
+import InputSubmit from '../Tools/NewMd/InputSubmit/InputSubmit';
+import InputText from '../Tools/NewMd/InputText/InputText';
+import InputTextArea from '../Tools/NewMd/InputTextArea/InputTextArea';
+import InputTextWithButton from '../Tools/NewMd/InputTextWithButton/InputTextWithButton';
+
+import dateFormatter from '../../common/dateFormatter';
+
+import styles from './NewLetter.module.css'
+import { useAddLetterMutation } from '../../api/lettersApi';
+
+function NewLetter(props) {
+
+  const [type_ref ,setLetterType] = useState(props.defaultType);
+  const [number, setNumber] = useState('');
+  const dateNow = new Date();
+  const [date, setDate] = useState(dateFormatter(dateNow, '-'));
+  const [theme, setTheme] = useState('');
+  const [sender_ref, setSender] = useState('');
+  const [addressee_ref, setAddressee] = useState('');
+  
+  const {data: types, isSuccess: typesSuccess } = useGetLetterTypesQuery();
+  const [addLetter, { isLoading }] = useAddLetterMutation();
+
+  const handlerSubmit = async() => {
+    await addLetter({ number, date, theme, type_ref, sender_ref, addressee_ref }).unwrap()
+  };
+
+  let addresseeField;
+  switch(type_ref) {
+    case 1:
+      addresseeField = <InputTextWithButton label='Отправитель' name='sender'
+                        value={sender_ref} onChange={setSender} />;
+      break;
+    case 2:
+      addresseeField = <InputTextWithButton label='Получатель' name='sender'
+                        value={addressee_ref} onChange={setAddressee} />;
+      break;
+    default:
+      addresseeField = <InputTextWithButton label='Отправитель' name='sender'
+                        value={sender_ref} onChange={setSender} />;
+  }
+  
+  return (
+    <div className={styles.background}>
+      <form className={styles.newcp_form_wrapper}>
+        <h1 className={styles.newcp_header}>Новый документ</h1>
+        <div className={styles.type_radio_wrapper}>
+          {
+            typesSuccess &&
+            Object.values(types).map((type) => {
+              return <div key={type.id} className={styles.type_radio_with_label}>
+                  <input className={styles.radio} type="radio" id={`entity${type.id}`} 
+                        name="type" value={type.id} checked={type.id === type_ref}
+                        onChange={(event) => setLetterType(Number(event.target.value))} />
+                  <label htmlFor={`entity${type.id}`}>{type.name}</label>
+                </div>
+            })
+          }
+        </div>
+        <InputText label='Номер' name='number' isRequired={true}
+                   value={number} onChangeFunction={setNumber} />
+        <InputDate label='Дата' name='date' isRequired={true}
+                   value={date} onChangeFunction={setDate} />
+        <InputTextArea label='Название (тема)' name='theme' isRequired={false}
+                   value={theme} onChangeFunction={setTheme} />
+        {addresseeField}
+        <div className={styles.buttons}>
+          <InputSubmit value='Сохранить' onClickFunction={handlerSubmit} />
+        </div>
+      </form>
+    </div>
+  )
+};
+
+export default NewLetter;

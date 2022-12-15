@@ -1,0 +1,48 @@
+.background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(121, 121, 121, 0.87);
+}
+
+.newcp_form_wrapper {
+  max-width: 1000px;
+  min-width: 300px;
+  max-height: 700px;
+  min-height: 300px;
+  z-index: 100;
+  background-color: rgb(87, 97, 68);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.664);
+  font-family: 'Roboto';
+  padding: 0 20px 20px;
+}
+
+.newcp_header {
+  color: #fff;
+  margin: 20px 0;
+  font-weight: 300;
+}
+
+.type_radio_wrapper {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+}
+
+.type_radio_with_label {
+  margin-right: 60px;
+}
+
+.radio {
+  margin-right: 10px;
+}
+
+.newcp_form {
+  margin: 20px 40px;
+}

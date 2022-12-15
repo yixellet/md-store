@@ -56,6 +56,10 @@ export const mdApi = createApi({
       query: (group) => `subtypesbygroup?group=${group}`,
       transformResponse: (responseData) => responseData.data,
     }),
+    getLetterTypes: builder.query({
+      query: () => 'letter_types',
+      transformResponse: (responseData) => responseData.data,
+    }),
     addMdDmap: builder.mutation({
       query: (md) => ({
         url: '/addmetadata',
@@ -80,5 +84,6 @@ export const {
   useGetSubtypesQuery,
   useGetSubtypesByGroupQuery,
   useGetStorageFormatsByGroupQuery,
+  useGetLetterTypesQuery,
   useAddMdDmapMutation
 } = mdApi;

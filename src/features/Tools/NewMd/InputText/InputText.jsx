@@ -12,7 +12,6 @@ function InputText(props) {
              id={props.name} 
              className={styles.text_input}
              value={props.value}
-             required
              onChange={event => props.onChangeFunction(event.target.value)} />
     </div>
   )

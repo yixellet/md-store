@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import dateFormatter from '../../../common/dateFormatter';
 import * as mdApi from '../../../api/mdApi';
 import InputSelect from './InputSelect/InputSelect';
@@ -13,8 +13,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setGeometry } from '../../../store/reducers/newMdSlice';
 import InputTextWithButton from './InputTextWithButton/InputTextWithButton';
 import InputSubmit from './InputSubmit/InputSubmit';
+import NewLetter from '../../NewLetter/NewLetter';
 
 function NewMd() {
+  
   const [type, setNewType] = useState('1');
   const [subtype, setSubtype] = useState('');
   const [storageFormat, setStorageFormat] = useState('');
@@ -93,6 +95,7 @@ function NewMd() {
   }
 
   return (
+    <>
     <form className={styles.newMdForm}>
       <div className={styles.form_fields}>
         {
@@ -233,6 +236,8 @@ function NewMd() {
       </div>
       <InputSubmit value='Сохранить' onClickFunction={handlerSubmit} />
     </form>
+    <NewLetter defaultType={1} />
+    </>
   )
 };
 
