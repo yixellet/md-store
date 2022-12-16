@@ -1,12 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveCpType } from '../../store/reducers/newCpSlice';
+import InputSubmit from '../Tools/NewMd/InputSubmit/InputSubmit';
+import InputReset from '../Tools/NewMd/InputReset/InputReset';
 import EntityForm from './Forms/EntityForm/EntityForm';
 import PersonForm from './Forms/PersonForm/PersonForm';
 
-import styles from './NewCpWrapper.module.css'
+import styles from './NewCounterparty.module.css'
+import { openCloseNewCounterpartyForm } from '../../store/reducers/appSlice';
 
-function NewCpWrapper() {
+function NewCounterparty() {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.newCp.cpTypes);
   const activeCpType = useSelector((state) => state.newCp.activeCpType);
@@ -21,11 +24,15 @@ function NewCpWrapper() {
       break;
     default:
       form = <EntityForm />;
+  };
+
+  const handlerReset = () => {
+    dispatch(openCloseNewCounterpartyForm());
   }
   
   return (
     <div className={styles.background}>
-      <div className={styles.newcp_form_wrapper}>
+      <form className={styles.newcp_form_wrapper}>
         <h1 className={styles.newcp_header}>Новый контрагент</h1>
         <div className={styles.type_radio_wrapper}>
           {
@@ -40,9 +47,13 @@ function NewCpWrapper() {
           }
         </div>
         {form}
-      </div>
+        <div className={styles.buttons}>
+          <InputSubmit value='Сохранить' onClickFunction={handlerReset} />
+          <InputReset value='Отменить и закрыть' onClickFunction={handlerReset} />
+        </div>
+      </form>
     </div>
   )
 };
 
-export default NewCpWrapper;
+export default NewCounterparty;

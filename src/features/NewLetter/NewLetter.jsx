@@ -10,8 +10,12 @@ import dateFormatter from '../../common/dateFormatter';
 
 import styles from './NewLetter.module.css'
 import { useAddLetterMutation } from '../../api/lettersApi';
+import InputReset from '../Tools/NewMd/InputReset/InputReset';
+import { useDispatch } from 'react-redux';
+import { closeNewLetterWindow, openCloseNewCounterpartyForm } from '../../store/reducers/appSlice';
 
 function NewLetter(props) {
+  const dispatch = useDispatch();
 
   const [type_ref ,setLetterType] = useState(props.defaultType);
   const [number, setNumber] = useState('');
@@ -20,27 +24,47 @@ function NewLetter(props) {
   const [theme, setTheme] = useState('');
   const [sender_ref, setSender] = useState('');
   const [addressee_ref, setAddressee] = useState('');
+
+  const resetFormProps = () => {
+    setLetterType(props.defaultType);
+    setNumber('');
+    setDate(dateFormatter(dateNow, '-'));
+    setTheme('');
+    setSender('');
+    setAddressee('');
+  }
   
   const {data: types, isSuccess: typesSuccess } = useGetLetterTypesQuery();
   const [addLetter, { isLoading }] = useAddLetterMutation();
 
+
   const handlerSubmit = async() => {
-    await addLetter({ number, date, theme, type_ref, sender_ref, addressee_ref }).unwrap()
+    await addLetter({ number, date, theme, type_ref, sender_ref, addressee_ref }).unwrap();
+    resetFormProps();
+    dispatch(closeNewLetterWindow());
   };
+
+  const handlerReset = () => {
+    resetFormProps();
+    dispatch(closeNewLetterWindow());
+  }
 
   let addresseeField;
   switch(type_ref) {
     case 1:
       addresseeField = <InputTextWithButton label='Отправитель' name='sender'
-                        value={sender_ref} onChange={setSender} />;
+                        value={sender_ref} onChangeFunction={setSender}
+                        onClickFunction={() => {dispatch(openCloseNewCounterpartyForm())}} />;
       break;
     case 2:
       addresseeField = <InputTextWithButton label='Получатель' name='sender'
-                        value={addressee_ref} onChange={setAddressee} />;
+                        value={addressee_ref} onChangeFunction={setAddressee}
+                        onClickFunction={() => {dispatch(openCloseNewCounterpartyForm())}} />;
       break;
     default:
       addresseeField = <InputTextWithButton label='Отправитель' name='sender'
-                        value={sender_ref} onChange={setSender} />;
+                        value={sender_ref} onChangeFunction={setSender}
+                        onClickFunction={() => {dispatch(openCloseNewCounterpartyForm())}} />;
   }
   
   return (
@@ -69,6 +93,7 @@ function NewLetter(props) {
         {addresseeField}
         <div className={styles.buttons}>
           <InputSubmit value='Сохранить' onClickFunction={handlerSubmit} />
+          <InputReset value='Отменить и закрыть' onClickFunction={handlerReset} />
         </div>
       </form>
     </div>

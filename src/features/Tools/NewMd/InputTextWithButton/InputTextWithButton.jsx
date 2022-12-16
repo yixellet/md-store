@@ -6,7 +6,7 @@ function InputTextWithButton(props) {
 
   const onClickHandler = (event) => {
     event.preventDefault();
-    this.props.onClickFunction();
+    props.onClickFunction();
   }
   
   return (

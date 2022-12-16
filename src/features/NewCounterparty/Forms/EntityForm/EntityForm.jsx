@@ -6,9 +6,9 @@ import styles from './EntityForm.module.css'
 function EntityForm() {
   
   return (
-    <form className={styles.newcp_form}>
+    <div className={styles.newcp_form}>
       <InputText label='Сокращенное наименование' />
-    </form>
+    </div>
   )
 };
 

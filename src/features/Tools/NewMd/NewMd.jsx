@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setGeometry } from '../../../store/reducers/newMdSlice';
 import InputTextWithButton from './InputTextWithButton/InputTextWithButton';
 import InputSubmit from './InputSubmit/InputSubmit';
-import NewLetter from '../../NewLetter/NewLetter';
+import { openCloseNewCounterpartyForm, openNewLetterWindow } from '../../../store/reducers/appSlice';
 
 function NewMd() {
   
@@ -95,7 +95,6 @@ function NewMd() {
   }
 
   return (
-    <>
     <form className={styles.newMdForm}>
       <div className={styles.form_fields}>
         {
@@ -199,22 +198,44 @@ function NewMd() {
           <legend>Контрагенты</legend>
           {
             (entitiesSuccess && type !== '3') &&
-            <InputSelect label='Местонахождение данных' name='location' options={entities}
-                         onChangeFunction={setLocation} isRequired={true} />
+            <InputTextWithButton label='Местонахождение данных' 
+                                 name="location" 
+                                 value={location} 
+                                 isRequired={true} 
+                                 onChangeFunction={setLocation}
+                                 onClickFunction={() => dispatch(openCloseNewCounterpartyForm())} />
           }
           {
             entitiesSuccess &&
-            <InputSelect label='Организация-изготовитель' name='creator' options={entities}
-                         onChangeFunction={setCreator} isRequired={true} />
+            <InputTextWithButton label='Организация-изготовитель' 
+                                 name="creator" 
+                                 value={creator} 
+                                 isRequired={true} 
+                                 onChangeFunction={setCreator}
+                                 onClickFunction={() => dispatch(openCloseNewCounterpartyForm())} />
           }
           {
             entitiesSuccess &&
-            <InputSelect label='Правообладатель' name='rightholder' options={entities}
-                         onChangeFunction={setRightHolder} isRequired={true} />
+            <InputTextWithButton label='Правообладатель' 
+                                 name="rightholder" 
+                                 value={rightHolder} 
+                                 isRequired={true} 
+                                 onChangeFunction={setRightHolder}
+                                 onClickFunction={() => dispatch(openCloseNewCounterpartyForm())} />
           }
         </fieldset>
-        <InputTextWithButton label='Входящий документ' name="incomingdoc" value={incomingDoc} isRequired={false} onChangeFunction={setIncomingDoc} />
-        <InputTextWithButton label='Исходящий документ' name="outgoingdoc" value={outgoingDoc} isRequired={false} onChangeFunction={setOutgoingDoc} />
+        <InputTextWithButton label='Входящий документ' 
+                             name="incomingdoc" 
+                             value={incomingDoc} 
+                             isRequired={false} 
+                             onChangeFunction={setIncomingDoc}
+                             onClickFunction={() => dispatch(openNewLetterWindow(1))} />
+        <InputTextWithButton label='Исходящий документ' 
+                             name="outgoingdoc" 
+                             value={outgoingDoc} 
+                             isRequired={false} 
+                             onChangeFunction={setOutgoingDoc}
+                             onClickFunction={() => dispatch(openNewLetterWindow(2))} />
         {
           (type !== '5') &&
           <fieldset className={styles.fieldset}>
@@ -236,8 +257,6 @@ function NewMd() {
       </div>
       <InputSubmit value='Сохранить' onClickFunction={handlerSubmit} />
     </form>
-    <NewLetter defaultType={1} />
-    </>
   )
 };
 

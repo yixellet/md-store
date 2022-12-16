@@ -25,6 +25,13 @@ const initialState = {
       isRequired: [],
       fieldType: 'text'
     },
+  },
+  newLetterForm: {
+    isOpened: false,
+    defaultType: null,
+  },
+  newCounterpartyForm: {
+    isOpened: false,
   }
 }
 
@@ -34,10 +41,26 @@ const appSlice = createSlice({
   reducers: {
     setActiveTab: (state, action) => {
       state.activeTab = action.payload
+    },
+    openNewLetterWindow: (state, action) => {
+      state.newLetterForm.isOpened = true;
+      state.newLetterForm.defaultType = action.payload
+    },
+    closeNewLetterWindow: (state, action) => {
+      state.newLetterForm.isOpened = false;
+      state.newLetterForm.defaultType = null
+    },
+    openCloseNewCounterpartyForm: (state, action) => {
+      state.newCounterpartyForm.isOpened = !state.newCounterpartyForm.isOpened
     }
   }
 });
 
-export const { setActiveTab } = appSlice.actions;
+export const {
+  setActiveTab,
+  openNewLetterWindow,
+  closeNewLetterWindow,
+  openCloseNewCounterpartyForm
+} = appSlice.actions;
 
 export default appSlice.reducer;
