@@ -33,21 +33,21 @@ function NewCounterparty() {
   return (
     <div className={styles.background}>
       <form className={styles.newcp_form_wrapper}>
-        <div>
-        <h1 className={styles.newcp_header}>Новый контрагент</h1>
-        <div className={styles.type_radio_wrapper}>
-          {
-            Object.values(types).map((type) => {
-              return <div key={type.id} className={styles.type_radio_with_label}>
-                  <input className={styles.radio} type="radio" id={`entity${type.id}`} 
-                        name="type" value={type.id} checked={type.id === activeCpType}
-                        onChange={() => {dispatch(setActiveCpType(type.id))}} />
-                  <label htmlFor={`entity${type.id}`}>{type.name}</label>
-                </div>
-            })
-          }
-        </div>
-        {form}
+        <div className={styles.header_and_form}>
+          <h1 className={styles.newcp_header}>Новый контрагент</h1>
+          <div className={styles.type_radio_wrapper}>
+            {
+              Object.values(types).map((type) => {
+                return <div key={type.id} className={styles.type_radio_with_label}>
+                    <input className={styles.radio} type="radio" id={`entity${type.id}`} 
+                          name="type" value={type.id} checked={type.id === activeCpType}
+                          onChange={() => {dispatch(setActiveCpType(type.id))}} />
+                    <label htmlFor={`entity${type.id}`}>{type.name}</label>
+                  </div>
+              })
+            }
+          </div>
+          {form}
         </div>
         <div className={styles.buttons}>
           <div className={styles.button_wrapper}>

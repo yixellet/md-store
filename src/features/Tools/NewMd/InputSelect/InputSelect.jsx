@@ -6,9 +6,16 @@ class InputSelect extends React.Component {
   render() {
     return (
       <div className={styles.input_wrapper}>
-        <InputLabel name={this.props.label} for={this.props.name} isRequired={this.props.isRequired} />
-        <select name={this.props.name} id={this.props.name} required className={styles.comboBox} value={this.props.defaultOption} onChange={event=>this.props.onChangeFunction(event.target.value)}>
+        <InputLabel name={this.props.label} 
+                    for={this.props.name} 
+                    isRequired={this.props.isRequired} />
+        <select name={this.props.name} 
+                id={this.props.name}
+                className={styles.comboBox} 
+                value={this.props.defaultOption} 
+                onChange={event=>this.props.onChangeFunction(event.target.value)}>
           {
+            this.props.options &&
             Object.values(this.props.options).map((option) => {
               return <option key={option.id} value={option.id}>{option.name}</option>
             })

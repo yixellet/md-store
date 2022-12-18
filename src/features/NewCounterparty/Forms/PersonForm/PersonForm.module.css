@@ -31,3 +31,38 @@
 .radio_wrapper:first-of-type {
   margin-right: 30px;
 }
+
+.houses_aprt {
+  display: flex;
+  flex-direction: row;
+}
+
+.houseSelect_wrapper {
+  margin-right: 10px;
+  min-width: 150px;
+}
+
+.contacts_button_wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.contacts_button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(217, 247, 88);
+  border: none;
+  cursor: pointer;
+}
+
+.contacts_button:hover {
+  background-color: rgb(217, 247, 88);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
+}
+
+.contacts_button:active {
+  background-color: rgb(141, 165, 32);
+  box-shadow: none;
+}

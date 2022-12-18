@@ -8,9 +8,19 @@ export const garApi = createApi({
       query: (string) => `search_address?string=${string}`,
       transformResponse: (responseData) => responseData.data,
     }),
+    getHouses: builder.query({
+      query: (objectid) => `houses?objectid=${objectid}`,
+      transformResponse: (responseData) => responseData.data,
+    }),
+    getApartments: builder.query({
+      query: (objectid) => `apartments?objectid=${objectid}`,
+      transformResponse: (responseData) => responseData.data,
+    }),
   }),
 });
 
 export const {
-  useAddressLiveSearchQuery
+  useAddressLiveSearchQuery,
+  useGetHousesQuery,
+  useGetApartmentsQuery
 } = garApi;
