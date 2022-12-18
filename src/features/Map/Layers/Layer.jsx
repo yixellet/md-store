@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
@@ -7,7 +7,7 @@ import { WKT } from 'ol/format';
 function Layer({ map }) {
   
   const geometry = useSelector(state => state.newMd.geometry);
-  const activeTab = useSelector(state => state.app.activeTab);
+  const inputType = useSelector(state => state.newMd.activeInputType);
 
   const [layer, setLayer] = useState(new VectorLayer({
     map: map,
@@ -25,6 +25,13 @@ function Layer({ map }) {
     layer.setSource(new VectorSource());
   }
 
+  useEffect(() => {
+    if (inputType === 3) {
+      layer.setVisible(true);
+    } else {
+      layer.setVisible(false);
+    }
+  }, [inputType, layer])
 
   return null;
 };

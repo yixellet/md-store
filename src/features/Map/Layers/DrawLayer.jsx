@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import { WKT } from 'ol/format';
+import { Draw, Modify, Snap } from 'ol/interaction';
 
 function DrawLayer({ map }) {
   
-  const geometry = useSelector(state => state.newMd.geometry);
+  const inputType = useSelector(state => state.newMd.activeInputType);
 
   const source = new VectorSource();
   const [layer, setLayer] = useState(new VectorLayer({
@@ -14,25 +14,17 @@ function DrawLayer({ map }) {
     zIndex: 20,
     source: source
   }));
-  layer.setVisible(true);
 
-  const modify = new Modify({source: source});
+  const modify = new Modify({source: source});  
+  const draw = new Draw({
+    source: source,
+    type: "Polygon",
+  });
+  const snap = new Snap({source: source});
   map.addInteraction(modify);
-  
-  let draw, snap;
-  const typeSelect = "Polygon";
-  
-  function addInteractions() {
-    draw = new Draw({
-      source: source,
-      type: typeSelect,
-    });
-    map.addInteraction(draw);
-    snap = new Snap({source: source});
-    map.addInteraction(snap);
-  };
-  
-  addInteractions();
+  map.addInteraction(draw);
+  map.addInteraction(snap);
+
 
   return null;
 };

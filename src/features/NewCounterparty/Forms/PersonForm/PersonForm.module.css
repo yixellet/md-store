@@ -1,5 +1,33 @@
-.newcp_form {
-  margin: 20px;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.137);
+.field_pair {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field_wrapper {
+  width: 100%;
+}
+
+.field_wrapper:first-of-type {
+  margin-right: 10px;
+}
+
+.fieldset {
+  color: #fff;
+  border: solid 1px rgb(175, 175, 175);
+}
+
+.fieldset:first-of-type {
+  margin-bottom: 10px;
+}
+
+.radio_block {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+}
+
+.radio_wrapper:first-of-type {
+  margin-right: 30px;
 }

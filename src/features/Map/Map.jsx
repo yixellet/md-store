@@ -6,6 +6,8 @@ import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
 import styles from "./Map.module.css";
 import Layer from "./Layers/Layer";
+import DrawLayer from "./Layers/DrawLayer";
+import { useSelector } from "react-redux";
 
 function Map() {
 
@@ -36,6 +38,7 @@ function Map() {
   return (
     <div ref={mapRef} className={styles.map} id="map">
       <Layer map={map} />
+      <DrawLayer map={map} />
     </div>
   )
 };

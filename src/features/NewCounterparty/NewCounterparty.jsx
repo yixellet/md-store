@@ -33,6 +33,7 @@ function NewCounterparty() {
   return (
     <div className={styles.background}>
       <form className={styles.newcp_form_wrapper}>
+        <div>
         <h1 className={styles.newcp_header}>Новый контрагент</h1>
         <div className={styles.type_radio_wrapper}>
           {
@@ -47,9 +48,14 @@ function NewCounterparty() {
           }
         </div>
         {form}
+        </div>
         <div className={styles.buttons}>
-          <InputSubmit value='Сохранить' onClickFunction={handlerReset} />
-          <InputReset value='Отменить и закрыть' onClickFunction={handlerReset} />
+          <div className={styles.button_wrapper}>
+            <InputSubmit value='Сохранить' onClickFunction={handlerReset} />
+          </div>
+          <div className={styles.button_wrapper}>
+            <InputReset value='Отменить и закрыть' onClickFunction={handlerReset} />
+          </div>
         </div>
       </form>
     </div>

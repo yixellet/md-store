@@ -6,6 +6,7 @@ import { lettersApi } from "../api/lettersApi";
 import appSlice from './reducers/appSlice';
 import newMdSlice from "./reducers/newMdSlice";
 import newCpSlice from "./reducers/newCpSlice";
+import { garApi } from "../api/garApi";
 
 export const store = configureStore({
   reducer: {
@@ -15,9 +16,14 @@ export const store = configureStore({
     [mdApi.reducerPath]: mdApi.reducer,
     [cpApi.reducerPath]: cpApi.reducer,
     [lettersApi.reducerPath]: lettersApi.reducer,
+    [garApi.reducerPath]: garApi.reducer,
   },
   middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware().concat(mdApi.middleware).concat(cpApi.middleware).concat(lettersApi.middleware),
+    getDefaultMiddleware()
+      .concat(mdApi.middleware)
+      .concat(cpApi.middleware)
+      .concat(lettersApi.middleware)
+      .concat(garApi.middleware),
 });
 
 setupListeners(store.dispatch);

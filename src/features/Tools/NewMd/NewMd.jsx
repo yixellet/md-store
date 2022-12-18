@@ -10,14 +10,14 @@ import SubmitButton from '../SubmitButton/SubmitButton';
 import styles from './NewMd.module.css'
 import { useGetAllEntitiesQuery } from '../../../api/cpApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { setGeometry } from '../../../store/reducers/newMdSlice';
+import { setActiveInputType, setGeometry } from '../../../store/reducers/newMdSlice';
 import InputTextWithButton from './InputTextWithButton/InputTextWithButton';
 import InputSubmit from './InputSubmit/InputSubmit';
 import { openCloseNewCounterpartyForm, openNewLetterWindow } from '../../../store/reducers/appSlice';
 
 function NewMd() {
   
-  const [type, setNewType] = useState('1');
+  const [type, setType] = useState('1');
   const [subtype, setSubtype] = useState('');
   const [storageFormat, setStorageFormat] = useState('');
   const [nomenclature, setNomenclature] = useState('');
@@ -44,13 +44,13 @@ function NewMd() {
   const [rightHolder, setRightHolder] = useState('');
   const [incomingDoc, setIncomingDoc] = useState('');
   const [outgoingDoc, setOutgoingDoc] = useState('');
-  const [geomInputType, setGeomInputType] = useState('1');
   const GeoJSONref = useRef(null);
   const [geomWKT, setGeomWKT] = useState('');
 
   const dispatch = useDispatch();
 
   const geomInputTypes = useSelector(state => state.newMd.geomInputTypes);
+  const geomInputType = useSelector(state => state.newMd.activeInputType);
 
   const { data: types, isSuccess: typesSuccess } = mdApi.useGetGroupsQuery();
   const { data: scales, isSuccess: scalesSuccess } = mdApi.useGetScalesQuery();
@@ -92,6 +92,10 @@ function NewMd() {
       outgoingDoc,
       geomWKT
     }).unwrap()
+  };
+
+  const handleInputType = (type) => {
+    dispatch(setActiveInputType(Number(type)))
   }
 
   return (
@@ -100,7 +104,7 @@ function NewMd() {
         {
           typesSuccess && 
           <InputSelect label='Тип' 
-                       name='type' options={types} defaultOption={type} onChangeFunction={setNewType} />
+                       name='type' options={types} defaultOption={type} onChangeFunction={setType} />
         }
         {
           subtypesSuccess && 
@@ -241,13 +245,13 @@ function NewMd() {
           <fieldset className={styles.fieldset}>
             <legend>Геометрия</legend>
             <InputSelect label='Способ ввода' name='geomtype' options={geomInputTypes}
-                         defaultOption={geomInputType} onChangeFunction={setGeomInputType} />
+                         defaultOption={geomInputType} onChangeFunction={handleInputType} />
             {
-              geomInputType === '2' &&
+              geomInputType === 2 &&
               <input type="file" ref={GeoJSONref} />
             }
             {
-              geomInputType === '3' &&
+              geomInputType === 3 &&
               <InputTextArea label='' name='wkt' 
                              value={geomWKT} onChangeFunction={setGeomWKT} />
             }
