@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import { useAddressLiveSearchQuery, useGetApartmentsQuery, useGetHousesQuery } from '../../../../api/garApi';
-import InputRadio from '../../../Tools/NewMd/InputRadio/InputRadio';
-import InputSearchField from '../../../Tools/NewMd/InputSearchField/InputSearchField';
 import InputText from '../../../Tools/NewMd/InputText/InputText';
-import InputTextArea from '../../../Tools/NewMd/InputTextArea/InputTextArea';
-import InputSelect from '../../../Tools/NewMd/InputSelect/InputSelect';
 
 import styles from './PersonForm.module.css'
 import AddressFieldset from '../AddressFieldset/AddressFieldset';
@@ -15,63 +10,10 @@ function PersonForm() {
   const [patronym, setPatronym] = useState('');
   const [surname, setSurname] = useState('');
   const [inn, setInn] = useState('');
-
-  // Параметры адреса регистрации
   const [regAddrType, setRegAddrType] = useState('reg_gar') // Метод ввода (ссылка на ГАР или текст)
   const [regaddress_ref, setRegaddress_ref] = useState(''); // objectid дома или квартиры в ГАР
   const [regaddress_text, setRegaddress_text] = useState(''); // Адрес в виде текста (для адресов за пределами Астр. обл.)
-  const [regaddress_street, setRegaddress_street] = useState(null); // objectid адресного объекта верхнего уровня
-                                                                    // (населенного пункта, улицы или территории) в ГАР
-  const [regaddress_house, setRegaddress_house] = useState(null); // objectid дома в ГАР
-
-  const [regAddrString, setRegAddrString] = useState('');
-  let regAddrStringSkip;
-  if(regAddrString.length < 3) {
-    regAddrStringSkip = true
-  } else {
-    regAddrStringSkip = false
-  }
-
-  const rAddrHandle = (item) => {
-    setRegAddrString(item.name);
-    regAddrStringSkip = false;
-    setRegaddress_street(item.objectid);
-  }
-
-  const { data: liveSearchResults, isSuccess: regaddrsuccess } = useAddressLiveSearchQuery(regAddrString, { skip: regAddrStringSkip });
-  const { data: houses, isSuccess: housesSuccess } = useGetHousesQuery(regaddress_street ?? regaddress_street );
-  const { data: aprts, isSuccess: aprtsSuccess } = useGetApartmentsQuery(regaddress_house ?? regaddress_house );
-
-  let reg_addr_field;
-  if (regAddrType === 'reg_gar') {
-    reg_addr_field = <div>
-      <InputSearchField name='regaddress_ref' 
-                        isRequired={false}
-                        value={regAddrString}
-                        placeholder='Населенный пункт или улица'
-                        results={regaddrsuccess ? liveSearchResults : []}
-                        onChangeFunction={setRegAddrString}
-                        onClickFunction={rAddrHandle} />
-      <div className={styles.houses_aprt}>
-        <div className={styles.houseSelect_wrapper}>
-          <InputSelect name='regaddress_house'
-                       options={houses}
-                       onChangeFunction={setRegaddress_house} />
-        </div>
-        <div className={styles.houseSelect_wrapper}>
-          <InputSelect name='regaddress_aprt'
-                       options={aprts} />
-        </div>
-      </div>
-    </div>
-  } else {
-    reg_addr_field = <InputTextArea name='regaddress_text' 
-                                isRequired={false}
-                                value={regaddress_text} 
-                                onChangeFunction={setRegaddress_text} />
-  };
-
-  const [postaddress_ref, setPostaddress_ref] = useState('');
+  const [postaddress_ref, setPostaddress_ref] = useState(null);
   const [postaddress_text, setPostaddress_text] = useState('');
   
   return (
@@ -115,29 +57,16 @@ function PersonForm() {
                     onChangeFunction={setInn} />
         </div>
       </div>
-      <fieldset className={styles.fieldset}>
-        <legend>Адрес регистрации</legend>
-        <div className={styles.radio_block}>
-          <div className={styles.radio_wrapper}>
-            <InputRadio label='ГАР'
-                        name='reg_addr_type'
-                        value='reg_gar'
-                        isChecked={regAddrType}
-                        onChangeFunction={setRegAddrType} />
-          </div>
-          <div className={styles.radio_wrapper}>
-            <InputRadio label='Текст'
-                        name='reg_addr_type'
-                        value='reg_text'
-                        isChecked={regAddrType}
-                        onChangeFunction={setRegAddrType} />
-          </div>
-        </div>
-        { reg_addr_field }
-      </fieldset>
+      <AddressFieldset label='Адрес регистрации'
+                      name='reg'
+                      textAddress={regaddress_text}
+                      getTextAddress={setRegaddress_text}
+                      getGARAddress={setRegaddress_ref} />
       <AddressFieldset label='Почтовый адрес'
+                      name='post'
                       textAddress={postaddress_text}
-                      getTextAddressFunction={setPostaddress_text} />
+                      getTextAddress={setPostaddress_text}
+                      getGARAddress={setPostaddress_ref} />
     </>
   )
 };

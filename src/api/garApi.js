@@ -13,7 +13,7 @@ export const garApi = createApi({
       transformResponse: (responseData) => responseData.data,
     }),
     getApartments: builder.query({
-      query: (house) => `apartments?objectid=${house.objectid}`,
+      query: (house) => `apartments?objectid=${house.id}`,
       transformResponse: (responseData) => responseData.data,
     }),
   }),
