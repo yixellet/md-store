@@ -52,9 +52,13 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgb(217, 247, 88);
+  background-color: rgb(181, 212, 41);
   border: none;
   cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .contacts_button:hover {

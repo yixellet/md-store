@@ -9,11 +9,11 @@ export const garApi = createApi({
       transformResponse: (responseData) => responseData.data,
     }),
     getHouses: builder.query({
-      query: (objectid) => `houses?objectid=${objectid}`,
+      query: (street) => `houses?objectid=${street.objectid}`,
       transformResponse: (responseData) => responseData.data,
     }),
     getApartments: builder.query({
-      query: (objectid) => `apartments?objectid=${objectid}`,
+      query: (house) => `apartments?objectid=${house.objectid}`,
       transformResponse: (responseData) => responseData.data,
     }),
   }),
