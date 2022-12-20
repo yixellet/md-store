@@ -1,0 +1,11 @@
+.fieldset {
+  width: 500px;
+  min-height: 100px;
+  margin-left: 20px;
+  color: #fff;
+  border: solid 1px rgb(175, 175, 175);
+}
+
+.fieldset:first-of-type {
+  margin-bottom: 10px;
+}

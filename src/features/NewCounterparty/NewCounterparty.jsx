@@ -5,6 +5,7 @@ import InputSubmit from '../Tools/NewMd/InputSubmit/InputSubmit';
 import InputReset from '../Tools/NewMd/InputReset/InputReset';
 import EntityForm from './Forms/EntityForm/EntityForm';
 import PersonForm from './Forms/PersonForm/PersonForm';
+import Contacts from './Forms/Contacts/Contacts';
 
 import styles from './NewCounterparty.module.css'
 import { openCloseNewCounterpartyForm } from '../../store/reducers/appSlice';
@@ -33,7 +34,7 @@ function NewCounterparty() {
   return (
     <div className={styles.background}>
       <form className={styles.newcp_form_wrapper}>
-        <div>
+        <div className={styles.half_block}>
           <div className={styles.header_and_form}>
             <h1 className={styles.newcp_header}>Новый контрагент</h1>
             <div className={styles.type_radio_wrapper}>
@@ -59,8 +60,9 @@ function NewCounterparty() {
             </div>
           </div>
         </div>
-        <div>
-          
+        <div className={styles.half_block}>
+          <Contacts legend='Телефонные номера' />
+          <Contacts legend='Электронная почта' />
         </div>
       </form>
     </div>

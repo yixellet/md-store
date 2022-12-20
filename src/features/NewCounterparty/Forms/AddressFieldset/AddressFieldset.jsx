@@ -38,6 +38,17 @@ function AddressFieldset(props) {
     addrSkip = true;
     setLiveSearchString(item.name);
     setStreet(item);
+    props.getGARAddress(item.objectid);
+  };
+
+  const chooseHouseHandle = (item) => {
+    setHouse(item);
+    props.getGARAddress(item.id);
+  };
+
+  const chooseApartmentHandle = (item) => {
+    setApartment(item);
+    props.getGARAddress(item.id);
   };
 
   // skip для домов
@@ -83,14 +94,14 @@ function AddressFieldset(props) {
                           placeholder='дом'
                           value={house}
                           options={housesSuccess ? houses : []}
-                          onChangeFunction={setHouse} />
+                          onChangeFunction={chooseHouseHandle} />
             </div>
             <div className={styles.houseSelect_wrapper}>
               <InputSelectGAR name='apartment'
                           placeholder='квартира'
                           value={apartment}
                           options={aprtsSuccess ? apartments : []}
-                          onChangeFunction={setApartment} />
+                          onChangeFunction={chooseApartmentHandle} />
             </div>
           </div>
         </div>

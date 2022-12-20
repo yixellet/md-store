@@ -12,7 +12,7 @@
 
 .newcp_form_wrapper {
   min-width: 500px;
-  max-width: 800px;
+  max-width: 1800px;
   min-height: 400px;
   max-height: 1000px;
   z-index: 100;
@@ -21,8 +21,15 @@
   font-family: 'Roboto';
   padding: 40px 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+}
+
+.half_block {
+  min-width: 500px;
+  max-width: 800px;
+  min-height: 400px;
+  max-height: 1000px;
 }
 
 .header_and_form {
