@@ -8,13 +8,14 @@ export const cpApi = createApi({
       query: () => 'entities',
       transformResponse: (responseData) => responseData.data,
     }),
-    addPerson: builder.query({
-      query: (name, patronym, surname, inn, regaddress_ref, regaddress_text, postaddress_ref, postaddress_text) => 'addperson',
+    getPhoneTypes: builder.query({
+      query: () => 'phone_types',
       transformResponse: (responseData) => responseData.data,
     }),
   }),
 });
 
 export const {
-  useGetAllEntitiesQuery
+  useGetAllEntitiesQuery,
+  useGetPhoneTypesQuery
 } = cpApi;

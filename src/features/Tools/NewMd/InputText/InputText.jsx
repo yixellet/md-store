@@ -3,6 +3,16 @@ import InputLabel from '../InputLabel/InputLabel';
 import styles from './InputText.module.css'
 
 function InputText(props) {
+  /*
+  *  Компонент с инпутом типа "текст".
+  *  Параметры:
+  *   label: string - подпись поля
+  *   name: string -  имя поля
+  *   isRequired: bool - флаг обязательности
+  *   value: string - значение поля
+  *   onChangeFunction: function - функция, срабатывающая
+  *                                на событие onChange
+  */
   
   return (
     <div className={styles.input_wrapper}>

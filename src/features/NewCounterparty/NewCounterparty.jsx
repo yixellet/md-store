@@ -61,8 +61,8 @@ function NewCounterparty() {
           </div>
         </div>
         <div className={styles.half_block}>
-          <Contacts legend='Телефонные номера' />
-          <Contacts legend='Электронная почта' />
+          <Contacts type='phone' />
+          <Contacts type='email' />
         </div>
       </form>
     </div>

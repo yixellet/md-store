@@ -9,3 +9,45 @@
 .fieldset:first-of-type {
   margin-bottom: 10px;
 }
+
+.fields_list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.fields_string {
+  display: flex;
+  flex-direction: row;
+}
+
+.number {
+  width: 100%;
+}
+
+.comment {
+  width: 200px;
+  margin-left: 20px;
+}
+
+.add_button {
+  color: rgb(0, 0, 0);
+  background-color: rgb(181, 212, 41);
+  border: none;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 10px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.add_button:hover {
+  background-color: rgb(217, 247, 88);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
+}
+
+.add_button:active {
+  background-color: rgb(141, 165, 32);
+  box-shadow: none;
+}
