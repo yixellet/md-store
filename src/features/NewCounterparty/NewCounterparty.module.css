@@ -21,15 +21,8 @@
   font-family: 'Roboto';
   padding: 40px 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-}
-
-.half_block {
-  min-width: 500px;
-  max-width: 800px;
-  min-height: 400px;
-  max-height: 1000px;
 }
 
 .header_and_form {
@@ -55,16 +48,4 @@
 
 .radio {
   margin-right: 10px;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-top: 30px;
-}
-
-.button_wrapper {
-  width: 200px;
-  margin-left: 20px;
 }

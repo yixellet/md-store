@@ -1,3 +1,15 @@
+.all_fields {
+  display: flex;
+  flex-direction: row;
+}
+
+.fields_column {
+  min-width: 500px;
+  max-width: 800px;
+  min-height: 400px;
+  max-height: 1000px;
+}
+
 .field_pair {
   display: flex;
   flex-direction: row;
@@ -13,31 +25,14 @@
   margin-right: 10px;
 }
 
-.contacts_button_wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.contacts_button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgb(181, 212, 41);
-  border: none;
-  cursor: pointer;
-  padding: 0;
+.buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 30px;
 }
 
-.contacts_button:hover {
-  background-color: rgb(217, 247, 88);
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
-}
-
-.contacts_button:active {
-  background-color: rgb(141, 165, 32);
-  box-shadow: none;
+.button_wrapper {
+  width: 200px;
+  margin-left: 20px;
 }

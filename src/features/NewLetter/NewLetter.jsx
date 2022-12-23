@@ -91,10 +91,14 @@ function NewLetter(props) {
         <InputTextArea label='Название (тема)' name='theme' isRequired={false}
                    value={theme} onChangeFunction={setTheme} />
         {addresseeField}
-        <div className={styles.buttons}>
-          <InputSubmit value='Сохранить' onClickFunction={handlerSubmit} />
+      <div className={styles.buttons}>
+        <div className={styles.button_wrapper}>
+          <InputSubmit value='Сохранить' onClickFunction={handlerReset} />
+        </div>
+        <div className={styles.button_wrapper}>
           <InputReset value='Отменить и закрыть' onClickFunction={handlerReset} />
         </div>
+      </div>
       </form>
     </div>
   )
