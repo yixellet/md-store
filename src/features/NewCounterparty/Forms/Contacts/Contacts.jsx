@@ -32,8 +32,7 @@ function Contacts(props) {
             return <li className={styles.fields_string} key={idx}>
                     <div className={styles.number}>
                       <InputText name={`phone${idx}`} 
-                                 value={item.number}
-                                 onChangeFunction={onChangeNumber(event.target.value, idx)} />
+                                 value={item.number} />
                     </div>
                     {
                       (props.type === 'phone' && isSuccess) &&
