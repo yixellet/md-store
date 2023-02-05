@@ -9,11 +9,19 @@ export const garApi = createApi({
       transformResponse: (responseData) => responseData.data,
     }),
     getHouses: builder.query({
-      query: (street) => `houses?objectid=${street.objectid}`,
+      query: (street) => `houses?objectid=${street}`,
       transformResponse: (responseData) => responseData.data,
     }),
     getApartments: builder.query({
-      query: (house) => `apartments?objectid=${house.id}`,
+      query: (house) => `apartments?objectid=${house}`,
+      transformResponse: (responseData) => responseData.data,
+    }),
+    getObjectLevel: builder.query({
+      query: (objectid) => `level?objectid=${objectid}`,
+      transformResponse: (responseData) => responseData.data,
+    }),
+    getObjectParents: builder.query({
+      query: (objectid) => `parents?objectid=${objectid}`,
       transformResponse: (responseData) => responseData.data,
     }),
   }),
@@ -22,5 +30,7 @@ export const garApi = createApi({
 export const {
   useAddressLiveSearchQuery,
   useGetHousesQuery,
-  useGetApartmentsQuery
+  useGetApartmentsQuery,
+  useGetObjectLevelQuery,
+  useGetObjectParentsQuery
 } = garApi;

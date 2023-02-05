@@ -12,10 +12,49 @@ export const cpApi = createApi({
       query: () => 'phone_types',
       transformResponse: (responseData) => responseData.data,
     }),
+    addPerson: builder.mutation({
+      query: body => ({
+        url: 'add_person',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: body,
+      }),
+      transformResponse: (response, meta, arg) => response.data,
+      transformErrorResponse: (response, meta, arg) => response.status,
+    }),
+    addPersonPhone: builder.mutation({
+      query: body => ({
+        url: 'add_person_phone',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: body,
+      }),
+      transformResponse: (response, meta, arg) => response.data,
+      transformErrorResponse: (response, meta, arg) => response.status,
+    }),
+    addPersonEmail: builder.mutation({
+      query: body => ({
+        url: 'add_person_email',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: body,
+      }),
+      transformResponse: (response, meta, arg) => response.data,
+      transformErrorResponse: (response, meta, arg) => response.status,
+    }),
   }),
 });
 
 export const {
   useGetAllEntitiesQuery,
-  useGetPhoneTypesQuery
+  useGetPhoneTypesQuery,
+  useAddPersonMutation,
+  useAddPersonPhoneMutation,
+  useAddPersonEmailMutation
 } = cpApi;

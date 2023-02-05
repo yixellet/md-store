@@ -4,13 +4,6 @@ import styles from './InputSelectGAR.module.css'
 
 function InputSelectGAR(props) {
 
-  const handleChange = (value) => {
-    const chosenOption = props.options.find((option) => {
-      return option.id == value;
-    });
-    props.onChangeFunction(chosenOption);
-  };
-
   return (
     <div className={styles.input_wrapper}>
       <InputLabel name={props.label} 
@@ -19,8 +12,8 @@ function InputSelectGAR(props) {
       <select name={props.name} 
               id={props.name}
               className={styles.comboBox} 
-              value={props.value.id} 
-              onChange={event => handleChange(event.target.value)}>
+              value={props.value} 
+              onChange={event => props.onChangeFunction(event)}>
         <option key={-999} value={-999} disabled>{props.placeholder}</option>
         {
           props.options &&

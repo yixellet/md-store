@@ -1,5 +1,38 @@
-.newcp_form {
-  margin: 20px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.137);
+.all_fields {
+  display: flex;
+  flex-direction: row;
+}
+
+.fields_column {
+  min-width: 500px;
+  max-width: 800px;
+  min-height: 400px;
+  max-height: 1000px;
+}
+
+.field_pair {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field_wrapper {
+  width: 100%;
+}
+
+.field_wrapper:first-of-type {
+  margin-right: 10px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.button_wrapper {
+  width: 200px;
+  margin-left: 20px;
 }

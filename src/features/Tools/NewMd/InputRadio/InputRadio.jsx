@@ -12,7 +12,7 @@ function InputRadio(props) {
              className={styles.radio_input}
              value={props.value}
              checked={props.isChecked === props.value}
-             onChange={event => props.onChangeFunction(event.target.value)} />
+             onChange={event => props.onChangeFunction(event)} />
       <InputLabel name={props.label} for={props.value} />
     </div>
   )

@@ -8,21 +8,48 @@ import InputReset from '../../../Tools/NewMd/InputReset/InputReset';
 import { openCloseNewCounterpartyForm } from '../../../../store/reducers/appSlice';
 import { useDispatch } from 'react-redux';
 import Contacts from '../Contacts/Contacts';
+import { useAddPersonMutation } from '../../../../api/cpApi';
+import Confirm from '../../Confirm/Confirm';
 
 function PersonForm() {
 
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
-  const [patronym, setPatronym] = useState('');
-  const [surname, setSurname] = useState('');
-  const [inn, setInn] = useState('');
-  const [regaddress_ref, setRegaddress_ref] = useState(null); // objectid дома или квартиры в ГАР
-  const [regaddress_text, setRegaddress_text] = useState(''); // Адрес в виде текста (для адресов за пределами Астр. обл.)
-  const [postaddress_ref, setPostaddress_ref] = useState(null);
-  const [postaddress_text, setPostaddress_text] = useState('');
-  
+  const [isConfirmOpened, setConfirm] = useState(false);
 
+  const initialState = {
+    name: null,
+    patronym: null,
+    surname: null,
+    inn: null,
+    regaddress_ref: null,
+    regaddress_text: null,
+    postaddress_ref: null,
+    postaddress_text: null,
+    phoneNumber: null,
+    email: null
+  };
+
+  const [formValues, setFormValues] = useState(initialState);
+  // const [formErrors, setFormErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const [addPerson, { data, isLoading }] = useAddPersonMutation();
+
+  const handleSubmit = () => {
+    setConfirm(true)
+  };
+  
+  const handleSubmitTrue = async() => {
+    setConfirm(false);
+    await addPerson(formValues).unwrap();
+    dispatch(openCloseNewCounterpartyForm());
+  };
+  
   const handlerReset = () => {
     dispatch(openCloseNewCounterpartyForm());
   };
@@ -36,15 +63,15 @@ function PersonForm() {
               <InputText label='Имя'
                         name='name' 
                         isRequired={true}
-                        value={name} 
-                        onChangeFunction={setName} />
+                        value={formValues.name === null ? '' : formValues.name} 
+                        onChangeFunction={handleChange} />
             </div>
             <div className={styles.field_wrapper}>
               <InputText label='Отчество (при наличии)'
                         name='patronym' 
                         isRequired={false}
-                        value={patronym} 
-                        onChangeFunction={setPatronym} />
+                        value={formValues.patronym === null ? '' : formValues.patronym} 
+                        onChangeFunction={handleChange} />
             </div>
           </div>
           <div className={styles.field_pair}>
@@ -52,41 +79,47 @@ function PersonForm() {
               <InputText label='Фамилия'
                         name='surname' 
                         isRequired={true}
-                        value={surname} 
-                        onChangeFunction={setSurname} />
+                        value={formValues.surname === null ? '' : formValues.surname} 
+                        onChangeFunction={handleChange} />
             </div>
             <div className={styles.field_wrapper}>
               <InputText label='ИНН'
                         name='inn' 
                         isRequired={false}
-                        value={inn} 
-                        onChangeFunction={setInn} />
+                        value={formValues.inn === null ? '' : formValues.inn} 
+                        onChangeFunction={handleChange} />
             </div>
           </div>
           <AddressFieldset label='Адрес регистрации'
                           name='reg'
-                          textAddress={regaddress_text}
-                          getTextAddress={setRegaddress_text}
-                          getGARAddress={setRegaddress_ref} />
+                          textAddress={formValues.regaddress_text === null ? '' : formValues.regaddress_text}
+                          onChangeFunction={handleChange} />
           <AddressFieldset label='Почтовый адрес'
                           name='post'
-                          textAddress={postaddress_text}
-                          getTextAddress={setPostaddress_text}
-                          getGARAddress={setPostaddress_ref} />
+                          textAddress={formValues.postaddress_text === null ? '' : formValues.postaddress_text}
+                          onChangeFunction={handleChange} />
         </div>
         <div className={styles.fields_column}>
-          <Contacts type='phone' />
-          <Contacts type='email' />
+          <Contacts type='phoneNumber' 
+                    value={formValues.phoneNumber === null ? '' : formValues.phoneNumber} 
+                    onChangeFunction={handleChange} />
+          <Contacts type='email' 
+                    value={formValues.email === null ? '' : formValues.email} 
+                    onChangeFunction={handleChange} />
         </div>
       </div>
       <div className={styles.buttons}>
         <div className={styles.button_wrapper}>
-          <InputSubmit value='Сохранить' onClickFunction={handlerReset} />
+          <InputSubmit value='Сохранить' onClickFunction={() => handleSubmit()} />
         </div>
         <div className={styles.button_wrapper}>
           <InputReset value='Отменить и закрыть' onClickFunction={handlerReset} />
         </div>
       </div>
+      {
+        isConfirmOpened &&
+        <Confirm data={formValues} resetFunction={() => setConfirm(false)} submitFunction={() => handleSubmitTrue()} />
+      }
     </form>
   )
 };

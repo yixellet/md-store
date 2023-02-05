@@ -1,8 +1,8 @@
 // format date javascript
 function dateFormater(date, separator) {
-  const day = date.getDate();
+  let day = date.getDate();
   // add +1 to month because getMonth() returns month from 0 to 11
-  const month = date.getMonth() + 1;
+  let month = date.getMonth() + 1;
   const year = date.getFullYear();
 
   // show date and month in two digits

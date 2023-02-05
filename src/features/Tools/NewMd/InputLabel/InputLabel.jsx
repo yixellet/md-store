@@ -2,12 +2,24 @@ import React from 'react';
 
 import styles from './InputLabel.module.css'
 
-class InputLabel extends React.Component {
-  render() {
-    return (
-        <label htmlFor={this.props.for} className={styles.label}>{this.props.name} {this.props.isRequired ? '*' : ''}</label>
-    )
-  }
+function InputLabel(props) {
+  /**
+  *  Подпись поля формы.
+  *
+  *  @param {string} for Имя поля, к которому относится подпись
+  *  @param {string} name Текст подписи
+  *  @param {bool} isRequired Флаг обязательности
+  */
+
+  const { HTMLfor, name, isRequired } = props;
+ 
+  return (
+    <label htmlFor={HTMLfor} className={styles.label}>
+      {name} {isRequired ? '*' : ''}
+    </label>
+  )
 };
+
+InputLabel.defaultProps = { for: 'name', name: '<field_name>', isRequired: false};
 
 export default InputLabel;

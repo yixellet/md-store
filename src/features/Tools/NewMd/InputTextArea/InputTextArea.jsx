@@ -12,7 +12,7 @@ class InputTextArea extends React.Component {
                   id={this.props.name} 
                   className={styles.text_input}
                   value={this.props.value}
-                  onChange={event => this.props.onChangeFunction(event.target.value)} />
+                  onChange={(event) => this.props.onChangeFunction(event)} />
       </div>
     )
   }
