@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import NewCounterparty from '../NewCounterparty/NewCounterparty';
-import NewLetter from '../NewLetter/NewLetter';
-import FiltersTab from './FiltersTab/FiltersTab';
+//import NewLetter from '../NewLetter/NewLetter';
+//import FiltersTab from './FiltersTab/FiltersTab';
 import MdList from './MdList/MdList';
-import NewMd from './NewMd/NewMd';
+//import NewMd from './NewMd/NewMd';
+import NewMetadataItemForm from './NewMd/NewMetadataItemForm';
 import TabLabel from './TabLabel/TabLabel';
 
 import styles from './Tools.module.css'
@@ -18,16 +19,16 @@ function Tools(props) {
   let panel;
   switch (activeTab) {
     case 1:
-      panel = <FiltersTab />;
+      panel = null;
       break;
     case 2:
       panel = <MdList />;
       break;
     case 3:
-      panel = <NewMd />;
+      panel = <NewMetadataItemForm />;
       break;
     default:
-      panel = <FiltersTab />;
+      panel = null;
   }
   
   return (
@@ -46,7 +47,7 @@ function Tools(props) {
         </ul>
         {panel}
       </div>
-      { newLetterForm.isOpened && <NewLetter defaultType={newLetterForm.defaultType} /> }
+      { /*newLetterForm.isOpened && <NewLetter defaultType={newLetterForm.defaultType} /> */}
       { newCounterpartyForm.isOpened && <NewCounterparty /> }
     </div>
   )
