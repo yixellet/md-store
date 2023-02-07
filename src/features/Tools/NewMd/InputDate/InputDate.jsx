@@ -3,18 +3,35 @@ import InputLabel from '../InputLabel/InputLabel';
 
 import styles from './InputDate.module.css'
 
-class InputDate extends React.Component {
-  render() {
-    return (
-      <div className={styles.input_wrapper}>
-        <InputLabel name={this.props.label} for={this.props.name} isRequired={this.props.isRequired} />
-        <input type='date' name={this.props.name} 
-               id={this.props.name}
-               value={this.props.value} className={styles.text_input}
-               onChange={event => this.props.onChangeFunction(event.target.value)} />
-      </div>
-    )
-  }
+function InputDate(props) {
+  /**
+  *  Компонент с инпутом типа "select".
+  * 
+  *  @param {string} label подпись поля
+  *  @param {bool} showLabel флаг видимости подписи поля
+  *  @param {string} name имя поля
+  *  @param {bool} isRequired флаг обязательности
+  *  @param {string} value значение поля по умолчанию
+  *  @callback onChangeFunction функция, срабатывающая
+  *                                на событие onChange
+  */
+
+  /** @type {onChangeFunction} */
+
+  const { label, showLabel, name, isRequired, value, onChangeFunction } = props;
+
+  return (
+    <div className={styles.input_wrapper}>
+    {
+      showLabel &&
+      <InputLabel name={label} for={name} isRequired={isRequired} />
+    }
+      <input type='date' name={name} 
+              id={name}
+              value={value} className={styles.text_input}
+              onChange={event => onChangeFunction(event.target.value)} />
+    </div>
+  )
 };
 
 export default InputDate;
