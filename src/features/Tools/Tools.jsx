@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Header from '../CommonComponents/Header/Header';
 import NewCounterparty from '../NewCounterparty/NewCounterparty';
 //import NewLetter from '../NewLetter/NewLetter';
 //import FiltersTab from './FiltersTab/FiltersTab';
@@ -33,7 +34,7 @@ function Tools(props) {
   
   return (
     <div className={styles.tools_container}>
-      <h1 className={styles.header}>MD Manager</h1>
+      <Header name='Metadata Manager' />
       <form className={styles.form}>
         <input type='search' name='search' className={styles.searchInput} placeholder={`Поиск ...`} />
       </form>

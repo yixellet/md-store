@@ -32,7 +32,8 @@ const initialState = {
   },
   newCounterpartyForm: {
     isOpened: false,
-  }
+  },
+  modalWindowIsOpen: true,
 }
 
 const appSlice = createSlice({
@@ -52,6 +53,9 @@ const appSlice = createSlice({
     },
     openCloseNewCounterpartyForm: (state, action) => {
       state.newCounterpartyForm.isOpened = !state.newCounterpartyForm.isOpened
+    },
+    openCloseModalWindow: (state, action) => {
+      state.modalWindowIsOpen = !state.modalWindowIsOpen
     }
   }
 });
@@ -60,7 +64,8 @@ export const {
   setActiveTab,
   openNewLetterWindow,
   closeNewLetterWindow,
-  openCloseNewCounterpartyForm
+  openCloseNewCounterpartyForm,
+  openCloseModalWindow
 } = appSlice.actions;
 
 export default appSlice.reducer;

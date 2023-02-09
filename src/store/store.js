@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
+import { counterpartiesApi } from "../api/counterparties";
 import { dictionariesApi } from "../api/dictionaries";
 import { metadataApi } from "../api/metadata";
 
@@ -16,6 +17,7 @@ export const store = configureStore({
     app: appSlice,
     newMd: newMdSlice,
     newCp: newCpSlice,
+    [counterpartiesApi.reducerPath]: counterpartiesApi.reducer,
     [dictionariesApi.reducerPath]: dictionariesApi.reducer,
     [metadataApi.reducerPath]: metadataApi.reducer,
     [cpApi.reducerPath]: cpApi.reducer,
@@ -24,6 +26,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) => 
     getDefaultMiddleware()
+      .concat(counterpartiesApi.middleware)
       .concat(dictionariesApi.middleware)
       .concat(metadataApi.middleware)
       .concat(cpApi.middleware)
