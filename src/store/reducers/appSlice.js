@@ -16,22 +16,53 @@ const initialState = {
       label: 'Новая запись',
     }
   },
-  newMdFormFields: {
-    1: {
-      id: 1,
-      name: 'nomenclature',
-      label: 'Номенклатура',
-      isVisible: [1, 2, 3, 5],
-      isRequired: [],
-      fieldType: 'text'
+  counterpartiesList: {
+    '1': {
+      name: 'persons',
+      fields: {
+        1: {
+          id: 1,
+          name: 'name',
+          description: 'ФИО',
+          search: true,
+        },
+        2: {
+          id: 2,
+          name: 'inn',
+          description: 'ИНН',
+          search: true,
+        },
+        3: {
+          id: 3,
+          name: 'address',
+          description: 'Адрес',
+          search: false,
+        }
+      }
     },
-  },
-  newLetterForm: {
-    isOpened: false,
-    defaultType: null,
-  },
-  newCounterpartyForm: {
-    isOpened: false,
+    '2': {
+      name: 'entities',
+      fields: {
+        1: {
+          id: 1,
+          name: 'name',
+          description: 'Наименование',
+          search: true,
+        },
+        2: {
+          id: 2,
+          name: 'inn',
+          description: 'ИНН',
+          search: true,
+        },
+        3: {
+          id: 3,
+          name: 'address',
+          description: 'Адрес',
+          search: false,
+        }
+      }
+    },
   },
   modalWindowIsOpen: true,
 }
@@ -43,17 +74,6 @@ const appSlice = createSlice({
     setActiveTab: (state, action) => {
       state.activeTab = action.payload
     },
-    openNewLetterWindow: (state, action) => {
-      state.newLetterForm.isOpened = true;
-      state.newLetterForm.defaultType = action.payload
-    },
-    closeNewLetterWindow: (state, action) => {
-      state.newLetterForm.isOpened = false;
-      state.newLetterForm.defaultType = null
-    },
-    openCloseNewCounterpartyForm: (state, action) => {
-      state.newCounterpartyForm.isOpened = !state.newCounterpartyForm.isOpened
-    },
     openCloseModalWindow: (state, action) => {
       state.modalWindowIsOpen = !state.modalWindowIsOpen
     }
@@ -62,9 +82,6 @@ const appSlice = createSlice({
 
 export const {
   setActiveTab,
-  openNewLetterWindow,
-  closeNewLetterWindow,
-  openCloseNewCounterpartyForm,
   openCloseModalWindow
 } = appSlice.actions;
 

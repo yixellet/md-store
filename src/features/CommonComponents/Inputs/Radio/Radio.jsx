@@ -19,15 +19,13 @@ function Radio(props) {
     <div className={styles.wrapper}>
       {
         Object.values(props.options).map((option) => {
-          console.log(option);
-          console.log(props.isChecked);
           return <div className={styles.input_wrapper} key={option.id}>
             <input type='radio' 
                    name={props.name} 
                    id={option.id} 
-                   className={styles.radio_input}
+                   className={styles.radio}
                    value={option.id}
-                   checked={props.isChecked === option.id}
+                   checked={Number(props.isChecked) === option.id}
                    onChange={event => props.onChangeFunction(event.target.value)} />
             <Label name={option.name} HTMLfor={option.id} isRequired={false} />
           </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../CommonComponents/Header/Header';
-import NewCounterparty from '../NewCounterparty/NewCounterparty';
 //import NewLetter from '../NewLetter/NewLetter';
 //import FiltersTab from './FiltersTab/FiltersTab';
 import MdList from './MdList/MdList';
@@ -48,8 +47,6 @@ function Tools(props) {
         </ul>
         {panel}
       </div>
-      { /*newLetterForm.isOpened && <NewLetter defaultType={newLetterForm.defaultType} /> */}
-      { newCounterpartyForm.isOpened && <NewCounterparty /> }
     </div>
   )
 };

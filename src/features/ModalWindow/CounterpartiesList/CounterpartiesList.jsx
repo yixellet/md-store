@@ -5,6 +5,7 @@ import styles from './CounterpartiesList.module.css';
 import { useGetTypesQuery } from '../../../api/counterparties/types';
 import Header from '../../CommonComponents/Header/Header';
 import Radio from '../../CommonComponents/Inputs/Radio/Radio';
+import Table from './Table/Table';
 
 function CounterpartiesList(props) {
 
@@ -20,6 +21,7 @@ function CounterpartiesList(props) {
           isSuccess &&
           <Radio name='type' isRequired={false} options={types} isChecked={activeType} onChangeFunction={setActiveType} />
         }
+        <Table type={activeType} />
       </div>
     </ModalWindow>
   )
