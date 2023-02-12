@@ -1,25 +1,30 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../CommonComponents/Header/Header';
-//import NewLetter from '../NewLetter/NewLetter';
-//import FiltersTab from './FiltersTab/FiltersTab';
 import MdList from './MdList/MdList';
-//import NewMd from './NewMd/NewMd';
 import NewMetadataItemForm from './NewMd/NewMetadataItemForm';
 import TabLabel from './TabLabel/TabLabel';
 
-import styles from './Tools.module.css'
+import styles from './MainPanel.module.css'
+import Filters from './Filters/Filters';
 
-function Tools(props) {
+function MainPanel() {
+  /**
+  * Главная панель приложения.
+  * Имеет заголовок и состоит из трех вкладок:
+  *   1. "Фильтры" - для поиска записей метаданных,
+  *   2. "Метаданные" - для отображения отфильтрованных записей метаданных
+  *   3. "Новая запись" - форма ввода новой записи метаданных
+  * 
+  */
+
   const tabs = useSelector((state) => state.app.tabs);
   const activeTab = useSelector((state) => state.app.activeTab);
-  const newLetterForm = useSelector(state => state.app.newLetterForm);
-  const newCounterpartyForm = useSelector(state => state.app.newCounterpartyForm);
 
   let panel;
   switch (activeTab) {
     case 1:
-      panel = null;
+      panel = <Filters />;
       break;
     case 2:
       panel = <MdList />;
@@ -33,10 +38,9 @@ function Tools(props) {
   
   return (
     <div className={styles.tools_container}>
-      <Header name='Metadata Manager' />
-      <form className={styles.form}>
-        <input type='search' name='search' className={styles.searchInput} placeholder={`Поиск ...`} />
-      </form>
+      <div className={styles.header_wrapper}>
+        <Header name='Metadata Manager' />
+      </div>
       <div className={styles.tabs_wrapper}>
         <ul className={styles.tabLabels_wrapper}>
           {
@@ -45,10 +49,10 @@ function Tools(props) {
             })
           }
         </ul>
-        {panel}
+        { panel }
       </div>
     </div>
   )
 };
 
-export default Tools;
+export default MainPanel;

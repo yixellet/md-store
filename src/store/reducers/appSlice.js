@@ -64,7 +64,8 @@ const initialState = {
       }
     },
   },
-  modalWindowIsOpen: true,
+  selectedCounterparty: null,
+  modalWindowIsOpen: false,
 }
 
 const appSlice = createSlice({
@@ -72,16 +73,20 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     setActiveTab: (state, action) => {
-      state.activeTab = action.payload
+      state.activeTab = action.payload;
+    },
+    setSelectedCounterparty: (state, action) => {
+      state.selectedCounterparty = action.payload;
     },
     openCloseModalWindow: (state, action) => {
-      state.modalWindowIsOpen = !state.modalWindowIsOpen
+      state.modalWindowIsOpen = !state.modalWindowIsOpen;
     }
   }
 });
 
 export const {
   setActiveTab,
+  setSelectedCounterparty,
   openCloseModalWindow
 } = appSlice.actions;
 

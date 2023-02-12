@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { openCloseModalWindow } from '../../store/reducers/appSlice';
+import { openCloseModalWindow } from '../../../store/reducers/appSlice';
 
 import styles from './ModalWindow.module.css';
 
