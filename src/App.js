@@ -1,9 +1,9 @@
 import React from 'react';
 
+import Tools from './features/Tools/Tools';
 import Map from './features/Map/Map';
 
 import './App.css';
-import Tools from './features/Tools/Tools';
 
 function App() {
   return (
