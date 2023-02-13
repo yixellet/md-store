@@ -4,9 +4,9 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { counterpartiesApi } from "../api/counterparties";
 import { dictionariesApi } from "../api/dictionaries";
 import { metadataApi } from "../api/metadata";
+import { lettersApi } from "../api/letters";
 
 import { cpApi } from "../api/cpApi";
-import { lettersApi } from "../api/lettersApi";
 import appSlice from './reducers/appSlice';
 import newMdSlice from "./reducers/newMdSlice";
 import newCpSlice from "./reducers/newCpSlice";
