@@ -16,23 +16,56 @@ const initialState = {
       label: 'Новая запись',
     }
   },
-  newMdFormFields: {
-    1: {
-      id: 1,
-      name: 'nomenclature',
-      label: 'Номенклатура',
-      isVisible: [1, 2, 3, 5],
-      isRequired: [],
-      fieldType: 'text'
+  counterpartiesList: {
+    '1': {
+      name: 'persons',
+      fields: {
+        1: {
+          id: 1,
+          name: 'name',
+          description: 'ФИО',
+          search: true,
+        },
+        2: {
+          id: 2,
+          name: 'inn',
+          description: 'ИНН',
+          search: true,
+        },
+        3: {
+          id: 3,
+          name: 'address',
+          description: 'Адрес',
+          search: false,
+        }
+      }
+    },
+    '2': {
+      name: 'entities',
+      fields: {
+        1: {
+          id: 1,
+          name: 'name',
+          description: 'Наименование',
+          search: true,
+        },
+        2: {
+          id: 2,
+          name: 'inn',
+          description: 'ИНН',
+          search: true,
+        },
+        3: {
+          id: 3,
+          name: 'address',
+          description: 'Адрес',
+          search: false,
+        }
+      }
     },
   },
-  newLetterForm: {
-    isOpened: false,
-    defaultType: null,
-  },
-  newCounterpartyForm: {
-    isOpened: false,
-  }
+  selectedCounterparty: null,
+  modalWindowIsOpen: false,
 }
 
 const appSlice = createSlice({
@@ -40,27 +73,21 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     setActiveTab: (state, action) => {
-      state.activeTab = action.payload
+      state.activeTab = action.payload;
     },
-    openNewLetterWindow: (state, action) => {
-      state.newLetterForm.isOpened = true;
-      state.newLetterForm.defaultType = action.payload
+    setSelectedCounterparty: (state, action) => {
+      state.selectedCounterparty = action.payload;
     },
-    closeNewLetterWindow: (state, action) => {
-      state.newLetterForm.isOpened = false;
-      state.newLetterForm.defaultType = null
-    },
-    openCloseNewCounterpartyForm: (state, action) => {
-      state.newCounterpartyForm.isOpened = !state.newCounterpartyForm.isOpened
+    openCloseModalWindow: (state, action) => {
+      state.modalWindowIsOpen = !state.modalWindowIsOpen;
     }
   }
 });
 
 export const {
   setActiveTab,
-  openNewLetterWindow,
-  closeNewLetterWindow,
-  openCloseNewCounterpartyForm
+  setSelectedCounterparty,
+  openCloseModalWindow
 } = appSlice.actions;
 
 export default appSlice.reducer;

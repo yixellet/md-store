@@ -13,7 +13,7 @@ const subtypes = metadataApi.injectEndpoints({
       },
     }),
     getField: builder.query({
-      query: (id) => `subtypes/${id}`,
+      query: (id) => `fields/${id}`,
       transformResponse: (responseData) => responseData.data,
     }),
   }),

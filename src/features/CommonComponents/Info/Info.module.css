@@ -1,0 +1,14 @@
+.wrapper {
+  width: 400px;
+  height: 450px;
+  margin-left: 20px;
+  background-color: #424242;
+  overflow-y: scroll;
+}
+
+.name {
+  color: #d9f758;
+  margin: 20px;
+  font-weight: 400;
+  font-family: 'Roboto';
+}

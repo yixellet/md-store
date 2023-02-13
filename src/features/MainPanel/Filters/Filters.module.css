@@ -1,0 +1,50 @@
+.filters_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 80px);
+  background-color: #424242;
+  padding: 20px 10px;
+}
+
+.filters_form {
+  width: 100%;
+  min-height: 100px;
+}
+
+.fieldset {
+  border: 1px solid #868686;
+  margin: 20px 0;
+  padding: 10px;
+  max-height: 250px;
+  overflow-y: scroll;
+  color: #fff;
+}
+
+.alert {
+  color: #ff7373;
+  font-family: 'Roboto';
+}
+
+.fieldset_legend {
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.date_wrapper {
+  display: flex;;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.date {
+  margin-top: 10px;
+  margin-right: 30px;
+}
+
+.button_wrapper {
+  height: 40px;
+  width: 100%;
+}

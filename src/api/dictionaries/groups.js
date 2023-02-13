@@ -14,7 +14,7 @@ const groups = dictionariesApi.injectEndpoints({
     }),
     getGroup: builder.query({
       query: (id) => `groups/${id}`,
-      transformResponse: (responseData) => responseData.data,
+      transformResponse: (responseData) => responseData,
     }),
   }),
 });

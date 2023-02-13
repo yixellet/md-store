@@ -1,0 +1,104 @@
+.table {
+  font-family: Roboto;
+  font-size: 1.1rem;
+  border-collapse: collapse;
+}
+
+.head {
+  background-color: #d9f758;
+}
+
+.row {
+  color: #fff;
+}
+
+.row:hover {
+  color: #d9f758;
+  cursor: pointer;
+}
+
+.selected_row {
+  background-color: #6e6e6e;
+  color: #d9f758;
+}
+
+.cell, .head_cell {
+  padding: 7px;
+}
+
+.head_cell {
+  border: 2px solid #000000;
+}
+
+.cell {
+  border: 1px solid #5c5c5c;
+}
+
+.cell:first-of-type {
+  width: 300px;
+}
+
+.cell:nth-of-type(2) {
+  min-width: 60px;
+}
+
+.cell:nth-of-type(3) {
+  width: 360px;
+}
+
+.icon_wrapper {
+  display: inline;
+  margin: 0 5px;
+}
+
+.buttons_wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  background-color: #00000000;
+  border: none;
+  margin: 0 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+}
+
+.button_open {
+  background-color: #d9f758;
+  border: none;
+  margin: 0 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.button:hover {
+  background-color: #d9f758;
+  border-radius: 50%;
+}
+
+.svg_polygon {
+  display: none;
+  fill: #d9f758;
+}
+
+.svg_polygon_open {
+  fill: #000;
+}
+
+.row:hover .svg_polygon {
+  display: block;
+}
+
+.button:hover .svg_polygon {
+  fill: #000;
+}

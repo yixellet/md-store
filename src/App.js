@@ -1,15 +1,23 @@
 import React from 'react';
 
-import Tools from './features/Tools/Tools';
 import Map from './features/Map/Map';
 
 import './App.css';
+import { useSelector } from 'react-redux';
+import List from './features/Counterparties/List/List';
+import MainPanel from './features/MainPanel/MainPanel';
 
 function App() {
+
+  const modalIsOpen = useSelector(state => state.app.modalWindowIsOpen);
   return (
     <>
       <Map />
-      <Tools />
+      <MainPanel />
+      {
+        modalIsOpen && <List />
+      }
+     
     </>
   );
 }

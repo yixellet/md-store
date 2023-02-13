@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.input_wrapper {
+  min-width: 200px;
+  cursor: pointer;
+}
+
+.radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 1px solid #d9f758;
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.radio:checked {
+  border: 8px solid #d9f758;
+}
