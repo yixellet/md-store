@@ -4,7 +4,13 @@ const regions = dictionariesApi.injectEndpoints({
   endpoints: (builder) => ({
     getRegions: builder.query({
       query: (district) => `regions${district ? `?district=${district}` : ''}`,
-      transformResponse: (responseData) => responseData.data,
+      transformResponse: (responseData) => {
+        const byId = responseData.reduce((byId, dictionary) => {
+          byId[dictionary.id] = dictionary
+          return byId
+        }, {})
+        return byId
+      },
     }),
     getRegion: builder.query({
       query: (id) => `region/${id}`,
@@ -12,7 +18,13 @@ const regions = dictionariesApi.injectEndpoints({
     }),
     getFederalDistricts: builder.query({
       query: () => `federal_districts`,
-      transformResponse: (responseData) => responseData.data,
+      transformResponse: (responseData) => {
+        const byId = responseData.reduce((byId, dictionary) => {
+          byId[dictionary.id] = dictionary
+          return byId
+        }, {})
+        return byId
+      },
     }),
     getFederalDistrict: builder.query({
       query: (id) => `federal_districts/${id}`,

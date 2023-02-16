@@ -4,7 +4,13 @@ const accessConditions = dictionariesApi.injectEndpoints({
   endpoints: (builder) => ({
     getAccessConditions: builder.query({
       query: () => 'access_conditions',
-      transformResponse: (responseData) => responseData.data,
+      transformResponse: (responseData) => {
+        const byId = responseData.reduce((byId, dictionary) => {
+          byId[dictionary.id] = dictionary
+          return byId
+        }, {})
+        return byId
+      },
     }),
     getAccessCondition: builder.query({
       query: (id) => `access_conditions/${id}`,

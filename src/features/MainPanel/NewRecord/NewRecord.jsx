@@ -12,6 +12,18 @@ function NewRecord() {
     group: 1,
     storageformat_ref: 1,
     subtype_ref: 1,
+    scale: -1,
+    minscale: -1,
+    referencesystem_ref: -1,
+    heightsystem_ref: -1,
+    secretclass_ref: -1,
+    accesscondition_ref: -1,
+    name: '',
+    nomenclature: '',
+    comment: '',
+    guid: '',
+    objectquantity: '',
+    regions_ref: 12
   });
 
   const chooseGroup = (event) => {

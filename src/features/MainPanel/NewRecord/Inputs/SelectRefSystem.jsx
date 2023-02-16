@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useGetStorageFormatsQuery } from '../../../../api/dictionaries/storageFormats';
+import React from 'react';
+import { useGetReferenceSystemsQuery } from '../../../../api/dictionaries/referenceSystems';
 import Select from '../../../CommonComponents/Inputs/Select/Select';
 
-function SelectStorageFormat(props) {
+function SelectRefSystem(props) {
   
-  const { data, isSuccess } = useGetStorageFormatsQuery(props.group);
-
+  const { data, isSuccess } = useGetReferenceSystemsQuery();
+  
   return (
     isSuccess &&
     <Select label={props.label}
@@ -18,4 +18,4 @@ function SelectStorageFormat(props) {
   );
 };
 
-export default SelectStorageFormat;
+export default SelectRefSystem;

@@ -4,7 +4,13 @@ const heightSystems = dictionariesApi.injectEndpoints({
   endpoints: (builder) => ({
     getHeightSystems: builder.query({
       query: () => 'height_systems',
-      transformResponse: (responseData) => responseData.data,
+      transformResponse: (responseData) => {
+        const byId = responseData.reduce((byId, dictionary) => {
+          byId[dictionary.id] = dictionary
+          return byId
+        }, {})
+        return byId
+      },
     }),
     getHeightSystem: builder.query({
       query: (id) => `height_systems/${id}`,
