@@ -50,31 +50,31 @@ function Filters() {
   return (
     <form className={styles.filters_wrapper}>
       <div>
-      <fieldset className={styles.fieldset}>
-        <legend className={styles.fieldset_legend}>Типы данных</legend>
-        {
-          groupIsSuccess && <Checkbox options={groups} name='group' isChecked={checked} onChangeFunction={handleCheckGroup} />
-        }
-      </fieldset>
-      <fieldset className={styles.fieldset}>
-        <legend className={styles.fieldset_legend}>Подтипы данных</legend>
-        {
-          checked.length !== 0 ?
-          <Checkbox options={subtypes} name='subtype' isChecked={subtypesChecked} onChangeFunction={handleCheckSubtype} /> :
-          <p className={styles.alert}>Выберите тип данных выше</p>
-        }
-      </fieldset>
-      <fieldset className={styles.fieldset}>
-        <legend className={styles.fieldset_legend}>Дата состояния местности</legend>
-        <div className={styles.date_wrapper}>
-          <div className={styles.date}>
-            <InputDate showLabel={false} name='startDate' value={startDate} onChangeFunction={setStartDate} />
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.fieldset_legend}>Типы данных</legend>
+          {
+            groupIsSuccess && <Checkbox options={groups} name='group' isChecked={checked} onChangeFunction={handleCheckGroup} />
+          }
+        </fieldset>
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.fieldset_legend}>Подтипы данных</legend>
+          {
+            checked.length !== 0 ?
+            <Checkbox options={subtypes} name='subtype' isChecked={subtypesChecked} onChangeFunction={handleCheckSubtype} /> :
+            <p className={styles.alert}>Выберите тип данных выше</p>
+          }
+        </fieldset>
+        <fieldset className={styles.fieldset}>
+          <legend className={styles.fieldset_legend}>Дата состояния местности</legend>
+          <div className={styles.date_wrapper}>
+            <div className={styles.date}>
+              <InputDate showLabel={false} name='startDate' value={startDate} onChangeFunction={setStartDate} />
+            </div>
+            <div className={styles.date}>
+              <InputDate showLabel={false} name='endDate' value={endDate} onChangeFunction={setEndDate} />
+            </div>
           </div>
-          <div className={styles.date}>
-            <InputDate showLabel={false} name='endDate' value={endDate} onChangeFunction={setEndDate} />
-          </div>
-        </div>
-      </fieldset>
+        </fieldset>
       </div>
       <div className={styles.button_wrapper}>
         <Button label='Поиск' />

@@ -2,11 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from '../CommonComponents/Header/Header';
 import MdList from './MdList/MdList';
-import NewMetadataItemForm from './NewMd/NewMetadataItemForm';
 import TabLabel from './TabLabel/TabLabel';
 
 import styles from './MainPanel.module.css'
 import Filters from './Filters/Filters';
+import NewRecord from './NewRecord/NewRecord';
 
 function MainPanel() {
   /**
@@ -30,7 +30,7 @@ function MainPanel() {
       panel = <MdList />;
       break;
     case 3:
-      panel = <NewMetadataItemForm />;
+      panel = <NewRecord />;
       break;
     default:
       panel = null;

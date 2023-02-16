@@ -30,7 +30,7 @@ function Select (props) {
               id={name}
               className={styles.comboBox} 
               value={defaultOption} 
-              onChange={event=>onChangeFunction(event.target.value)}>
+              onChange={(event) => onChangeFunction(event)}>
         {
           options &&
           Object.values(options).map((option) => {
