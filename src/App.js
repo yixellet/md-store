@@ -4,18 +4,19 @@ import Map from './features/Map/Map';
 
 import './App.css';
 import { useSelector } from 'react-redux';
-import List from './features/Counterparties/List/List';
 import MainPanel from './features/MainPanel/MainPanel';
+import NewRecordForm from './features/NewRecordForm/NewRecordForm';
 
 function App() {
 
-  const modalIsOpen = useSelector(state => state.app.modalWindowIsOpen);
+  const openNewRecordWindow = useSelector(state => state.app.newRecord.modalWindowIsOpen);
+
   return (
     <>
       <Map />
       <MainPanel />
       {
-        modalIsOpen && <List />
+        openNewRecordWindow && <NewRecordForm />
       }
      
     </>

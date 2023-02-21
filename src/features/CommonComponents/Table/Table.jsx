@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDeletePersonMutation } from '../../../api/counterparties/persons';
 
 import styles from './Table.module.css';
 
@@ -21,6 +22,7 @@ function Table(props) {
    * @type {viewFunction} 
    */
 
+  
   const { fields, data, openInfoId, editFunction, viewFunction } = props;
 
   const [selectedItem, setSelectedItem] = useState(null);
@@ -38,6 +40,8 @@ function Table(props) {
     viewFunction(id);
   };
 
+  const { deletePerson, result } = useDeletePersonMutation();
+
   return (
     <table className={styles.table}>
       <thead className={styles.head}>
@@ -51,6 +55,11 @@ function Table(props) {
             <div className={styles.icon_wrapper}>
               <svg width="15" height="15" viewBox="0 0 528.899 528.899">
                 <path d="m328.883 89.125 107.59 107.589-272.34 272.34L56.604 361.465l272.279-272.34zm189.23-25.948-47.981-47.981c-18.543-18.543-48.653-18.543-67.259 0l-45.961 45.961 107.59 107.59 53.611-53.611c14.382-14.383 14.382-37.577 0-51.959zM.3 512.69c-1.958 8.812 5.998 16.708 14.811 14.565l119.891-29.069L27.473 390.597.3 512.69z"/>
+              </svg>
+            </div>
+            <div className={styles.icon_wrapper}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+                <path fill="#000" d="M17 2h-3.5l-1-1h-5l-1 1H3v2h14zM4 17a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5H4z"/>
               </svg>
             </div>
             <div className={styles.icon_wrapper}>
@@ -75,6 +84,13 @@ function Table(props) {
                   <button className={styles.button} onClick={() => {editFunction()}}>
                     <svg width="15" height="15" viewBox="0 0 528.899 528.899">
                       <path className={styles.svg_polygon} d="m328.883 89.125 107.59 107.589-272.34 272.34L56.604 361.465l272.279-272.34zm189.23-25.948-47.981-47.981c-18.543-18.543-48.653-18.543-67.259 0l-45.961 45.961 107.59 107.59 53.611-53.611c14.382-14.383 14.382-37.577 0-51.959zM.3 512.69c-1.958 8.812 5.998 16.708 14.811 14.565l119.891-29.069L27.473 390.597.3 512.69z"/>
+                    </svg>
+                  </button>
+                  <button className={item.id === openInfoId ? styles.button_open : styles.button} 
+                          onClick={() => deletePerson(item.id)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+                      <path className={item.id === openInfoId ? styles.svg_polygon_open : styles.svg_polygon} 
+                            d="M17 2h-3.5l-1-1h-5l-1 1H3v2h14zM4 17a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5H4z"/>
                     </svg>
                   </button>
                   <button className={item.id === openInfoId ? styles.button_open : styles.button} 

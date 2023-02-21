@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80vw;
+  height: 80vh;
+}
+
+.form_wrapper {
+  height: 100%;
+  width: calc((100% - 20px) / 2);
+}
+
+.form {
+  height: calc(100% - 38px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.fields {
+  overflow-y: scroll;
+  padding: 20px 0;
+  height: 100%;
+}
+
+.buttons_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.button_wrapper {
+  width: 150px;
+  margin-left: 20px;
+}

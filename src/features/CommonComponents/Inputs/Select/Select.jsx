@@ -34,7 +34,7 @@ function Select (props) {
         {
           options &&
           Object.values(options).map((option) => {
-            return <option key={option.id} value={option.id}>{option.name}</option>
+            return <option key={option.id} className={styles.option} value={option.id}>{option.name}</option>
           })
         }
       </select>

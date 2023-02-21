@@ -12,10 +12,18 @@ const persons = counterpartiesApi.injectEndpoints({
       query: (id) => `persons/${id}`,
       transformResponse: (responseData) => responseData,
     }),
+    deletePerson: builder.mutation({
+      query: (id) => ({
+        url: `persons/${id}`,
+        method: 'DELETE',
+      }),
+      transformResponse: (responseData) => responseData,
+    })
   }),
 });
 
 export const {
   useGetPersonsQuery,
-  useGetPersonQuery
+  useGetPersonQuery,
+  useDeletePersonMutation,
 } = persons;

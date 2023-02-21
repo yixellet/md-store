@@ -1,6 +1,6 @@
-import { lettersApi } from './index';
+import { documentsApi } from './index';
 
-const types = lettersApi.injectEndpoints({
+const types = documentsApi.injectEndpoints({
   endpoints: (builder) => ({
     getTypes: builder.query({
       query: () => `types`,

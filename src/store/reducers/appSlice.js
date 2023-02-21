@@ -16,6 +16,10 @@ const initialState = {
       label: 'Новая запись',
     }
   },
+  newRecord: {
+    modalWindowIsOpen: false,
+    type: null,
+  },
   counterpartiesList: {
     '1': {
       name: 'persons',
@@ -65,7 +69,6 @@ const initialState = {
     },
   },
   selectedCounterparty: null,
-  modalWindowIsOpen: false,
 }
 
 const appSlice = createSlice({
@@ -78,16 +81,22 @@ const appSlice = createSlice({
     setSelectedCounterparty: (state, action) => {
       state.selectedCounterparty = action.payload;
     },
-    openCloseModalWindow: (state, action) => {
-      state.modalWindowIsOpen = !state.modalWindowIsOpen;
-    }
+    openNewRecordWindow: (state, action) => {
+      state.newRecord.modalWindowIsOpen = true;
+      state.newRecord.type = action.payload;
+    },
+    closeNewRecordWindow: (state, action) => {
+      state.newRecord.modalWindowIsOpen = false;
+      state.newRecord.type = null;
+    },
   }
 });
 
 export const {
   setActiveTab,
   setSelectedCounterparty,
-  openCloseModalWindow
+  openNewRecordWindow,
+  closeNewRecordWindow
 } = appSlice.actions;
 
 export default appSlice.reducer;

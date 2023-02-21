@@ -1,22 +1,43 @@
-.submit_button {
+.button {
   color: rgb(0, 0, 0);
-  background-color: #d9f758;
   border: none;
   font-family: 'Roboto';
   font-size: 1.05rem;
   font-weight: 700;
   padding: 5px;
-  height: 100%;
+  height: 40px;
   width: 100%;
   cursor: pointer;
 }
 
-.submit_button:hover {
-  background-color: rgb(230, 253, 127);
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
+.green {
+  background-color: #d9f758;
 }
 
-.submit_button:active {
-  background-color: rgb(174, 199, 65);
+.grey {
+  background-color: #d1d1d1;
+}
+
+.button:hover {
+  box-shadow: 2px 5px 5px #0000008f;
+}
+
+.green:hover {
+  background-color: #e6fd7f;
+}
+
+.grey:hover {
+  background-color: #f0f0f0;
+}
+
+.button:active {
   box-shadow: none;
+}
+
+.green:active {
+  background-color: #aec741;
+}
+
+.grey:active {
+  background-color: #9e9e9e;
 }

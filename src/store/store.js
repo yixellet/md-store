@@ -4,13 +4,13 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { counterpartiesApi } from "../api/counterparties";
 import { dictionariesApi } from "../api/dictionaries";
 import { metadataApi } from "../api/metadata";
-import { lettersApi } from "../api/letters";
 
 import { cpApi } from "../api/cpApi";
 import appSlice from './reducers/appSlice';
 import newMdSlice from "./reducers/newMdSlice";
 import newCpSlice from "./reducers/newCpSlice";
 import { garApi } from "../api/garApi";
+import { documentsApi } from "../api/documents";
 
 export const store = configureStore({
   reducer: {
@@ -21,7 +21,7 @@ export const store = configureStore({
     [dictionariesApi.reducerPath]: dictionariesApi.reducer,
     [metadataApi.reducerPath]: metadataApi.reducer,
     [cpApi.reducerPath]: cpApi.reducer,
-    [lettersApi.reducerPath]: lettersApi.reducer,
+    [documentsApi.reducerPath]: documentsApi.reducer,
     [garApi.reducerPath]: garApi.reducer,
   },
   middleware: (getDefaultMiddleware) => 
@@ -30,7 +30,7 @@ export const store = configureStore({
       .concat(dictionariesApi.middleware)
       .concat(metadataApi.middleware)
       .concat(cpApi.middleware)
-      .concat(lettersApi.middleware)
+      .concat(documentsApi.middleware)
       .concat(garApi.middleware),
 });
 

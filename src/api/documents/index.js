@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const lettersApi = createApi({
-  reducerPath: 'lettersApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/letters' }),
+export const documentsApi = createApi({
+  reducerPath: 'documentsApi',
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/documents' }),
   endpoints: (builder) => ({
-    getLetters: builder.query({
+    getDocuments: builder.query({
       query: () => ``,
       transformResponse: (responseData) => {
         const byId = responseData.reduce((byId, dictionary) => {
@@ -14,11 +14,11 @@ export const lettersApi = createApi({
         return byId
       },
     }),
-    getLetter: builder.query({
+    getDocument: builder.query({
       query: (id) => `/${id}`,
       transformResponse: (responseData) => responseData,
     }),
-    addLetter: builder.mutation({
+    addDocument: builder.mutation({
       query: (body) => ({
         url: '/',
         method: 'POST',
@@ -29,7 +29,7 @@ export const lettersApi = createApi({
 });
 
 export const {
-  useGetLettersQuery,
-  useGetLetterQuery,
-  useAddLetterMutation
-} = lettersApi;
+  useGetDocumentsQuery,
+  useGetDocumentQuery,
+  useAddDocumentMutation
+} = documentsApi;

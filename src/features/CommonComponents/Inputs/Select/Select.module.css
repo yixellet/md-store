@@ -10,7 +10,13 @@
   border-radius: 0;
   box-shadow: none;
   border: none;
-  height: 30px;
+  height: 35px;
   padding: 0 10px;
   margin-top: 10px;
+  background-color: rgb(105, 105, 105);
+  color: #fff;
+}
+
+.option {
+  margin: 10px 0;
 }

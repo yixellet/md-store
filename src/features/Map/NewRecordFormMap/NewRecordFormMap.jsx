@@ -4,16 +4,15 @@ import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
-import styles from "./Map.module.css";
-import Layer from "./Layers/Layer";
+import styles from "./NewRecordFormMap.module.css";
 
-function Map() {
+function NewRecordFormMap() {
 
   const mapRef = useRef(null);
 
   const [view, setView] = useState(new View({
     center: fromLonLat([47.3, 47.15]),
-    zoom: 8
+    zoom: 7
   }));
 
   const osmLayer = new TileLayer({
@@ -31,13 +30,10 @@ function Map() {
     map.setTarget(mapRef.current);
   }, [map]);
 
-  //console.log(view.calculateExtent())
-
   return (
-    <div ref={mapRef} className={styles.map} id="map">
-      <Layer map={map} />
+    <div ref={mapRef} className={styles.map} id="formMap">
     </div>
   )
 };
 
-export default Map;
+export default NewRecordFormMap;
