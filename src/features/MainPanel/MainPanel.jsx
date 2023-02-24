@@ -1,12 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from '../CommonComponents/Header/Header';
 import MdList from './MdList/MdList';
-import TabLabel from './TabLabel/TabLabel';
 
 import styles from './MainPanel.module.css'
 import Filters from './Filters/Filters';
 import NewRecord from './NewRecord/NewRecord';
+import Tabs from '../CommonComponents/Tabs/Tabs';
+import { setActiveTab } from '../../store/reducers/appSlice';
 
 function MainPanel() {
   /**
@@ -17,7 +18,7 @@ function MainPanel() {
   *   3. "Новая запись" - форма ввода новой записи метаданных
   * 
   */
-
+  const dispatch = useDispatch();
   const tabs = useSelector((state) => state.app.tabs);
   const activeTab = useSelector((state) => state.app.activeTab);
 
@@ -42,14 +43,10 @@ function MainPanel() {
         <Header name='Metadata Manager' />
       </div>
       <div className={styles.tabs_wrapper}>
-        <ul className={styles.tabLabels_wrapper}>
-          {
-            Object.values(tabs).map((item) => {
-              return <TabLabel key={item.id} label={item.label} isActive={item.id === activeTab} id={item.id} />
-            })
-          }
-        </ul>
-        { panel }
+        <Tabs tabsSet={tabs} activeTab={activeTab}
+              setActiveTabFunction={(id) => dispatch(setActiveTab(id))}>
+          { panel }
+        </Tabs>
       </div>
     </div>
   )

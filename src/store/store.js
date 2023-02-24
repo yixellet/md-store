@@ -7,7 +7,7 @@ import { metadataApi } from "../api/metadata";
 
 import { cpApi } from "../api/cpApi";
 import appSlice from './reducers/appSlice';
-import newMdSlice from "./reducers/newMdSlice";
+import newRecord from "./reducers/newRecord";
 import newCpSlice from "./reducers/newCpSlice";
 import { garApi } from "../api/garApi";
 import { documentsApi } from "../api/documents";
@@ -15,7 +15,7 @@ import { documentsApi } from "../api/documents";
 export const store = configureStore({
   reducer: {
     app: appSlice,
-    newMd: newMdSlice,
+    newRecord: newRecord,
     newCp: newCpSlice,
     [counterpartiesApi.reducerPath]: counterpartiesApi.reducer,
     [dictionariesApi.reducerPath]: dictionariesApi.reducer,

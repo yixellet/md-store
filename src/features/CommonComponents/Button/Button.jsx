@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Button.module.css'
 
@@ -26,6 +27,12 @@ Button.defaultProps = {
   label: '<button_name>',
   color: 'green',
   onClickFunction: () => {},
+};
+
+Button.propTypes = {
+  label: PropTypes.string,
+  color: PropTypes.string,
+  onClickFunction: PropTypes.func,
 };
 
 export default Button;

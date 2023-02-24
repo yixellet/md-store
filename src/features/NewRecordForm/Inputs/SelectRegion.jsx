@@ -1,10 +1,10 @@
 import React from 'react';
-import { useGetSubtypesQuery } from '../../../../api/dictionaries/subtypes';
-import Select from '../../../CommonComponents/Inputs/Select/Select';
+import { useGetRegionsQuery } from '../../../api/dictionaries/regions';
+import Select from '../../CommonComponents/Inputs/Select/Select';
 
-function SelectSubtype(props) {
+function SelectRegion(props) {
   
-  const { data, isSuccess } = useGetSubtypesQuery(props.group);
+  const { data, isSuccess } = useGetRegionsQuery();
   
   return (
     isSuccess &&
@@ -18,4 +18,4 @@ function SelectSubtype(props) {
   );
 };
 
-export default SelectSubtype;
+export default SelectRegion;

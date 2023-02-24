@@ -1,10 +1,10 @@
 import React from 'react';
-import { useGetSubtypesQuery } from '../../../../api/dictionaries/subtypes';
+import { useGetReferenceSystemsQuery } from '../../../../api/dictionaries/referenceSystems';
 import Select from '../../../CommonComponents/Inputs/Select/Select';
 
-function SelectSubtype(props) {
+function SelectRefSystem(props) {
   
-  const { data, isSuccess } = useGetSubtypesQuery(props.group);
+  const { data, isSuccess } = useGetReferenceSystemsQuery();
   
   return (
     isSuccess &&
@@ -18,4 +18,4 @@ function SelectSubtype(props) {
   );
 };
 
-export default SelectSubtype;
+export default SelectRefSystem;

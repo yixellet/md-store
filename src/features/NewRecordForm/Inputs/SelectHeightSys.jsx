@@ -1,10 +1,10 @@
 import React from 'react';
-import { useGetSubtypesQuery } from '../../../../api/dictionaries/subtypes';
+import { useGetHeightSystemsQuery } from '../../../../api/dictionaries/heightSystems';
 import Select from '../../../CommonComponents/Inputs/Select/Select';
 
-function SelectSubtype(props) {
+function SelectHeightSys(props) {
   
-  const { data, isSuccess } = useGetSubtypesQuery(props.group);
+  const { data, isSuccess } = useGetHeightSystemsQuery();
   
   return (
     isSuccess &&
@@ -18,4 +18,4 @@ function SelectSubtype(props) {
   );
 };
 
-export default SelectSubtype;
+export default SelectHeightSys;

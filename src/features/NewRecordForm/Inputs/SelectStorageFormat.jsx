@@ -1,11 +1,11 @@
-import React from 'react';
-import { useGetSubtypesQuery } from '../../../../api/dictionaries/subtypes';
+import React, { useEffect } from 'react';
+import { useGetStorageFormatsQuery } from '../../../../api/dictionaries/storageFormats';
 import Select from '../../../CommonComponents/Inputs/Select/Select';
 
-function SelectSubtype(props) {
+function SelectStorageFormat(props) {
   
-  const { data, isSuccess } = useGetSubtypesQuery(props.group);
-  
+  const { data, isSuccess } = useGetStorageFormatsQuery(props.group);
+
   return (
     isSuccess &&
     <Select label={props.label}
@@ -18,4 +18,4 @@ function SelectSubtype(props) {
   );
 };
 
-export default SelectSubtype;
+export default SelectStorageFormat;

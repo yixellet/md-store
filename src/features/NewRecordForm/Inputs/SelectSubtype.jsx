@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGetSubtypesQuery } from '../../../../api/dictionaries/subtypes';
-import Select from '../../../CommonComponents/Inputs/Select/Select';
+import { useGetSubtypesQuery } from '../../../api/dictionaries/subtypes';
+import Select from '../../CommonComponents/Inputs/Select/Select';
 
 function SelectSubtype(props) {
   

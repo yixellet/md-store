@@ -6,7 +6,7 @@ const subtypes = metadataApi.injectEndpoints({
       query: (group) => `fields${group ? `?group=${group}` : ''}`,
       transformResponse: (responseData) => {
         const byId = responseData.reduce((byId, dictionary) => {
-          byId[dictionary.order] = dictionary
+          byId[dictionary.id] = dictionary
           return byId
         }, {})
         return byId

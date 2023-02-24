@@ -1,10 +1,10 @@
 import React from 'react';
-import { useGetSubtypesQuery } from '../../../../api/dictionaries/subtypes';
-import Select from '../../../CommonComponents/Inputs/Select/Select';
+import { useGetAccessConditionsQuery } from '../../../api/dictionaries/accessConditions';
+import Select from '../../CommonComponents/Inputs/Select/Select';
 
-function SelectSubtype(props) {
+function SelectAccessCond(props) {
   
-  const { data, isSuccess } = useGetSubtypesQuery(props.group);
+  const { data, isSuccess } = useGetAccessConditionsQuery();
   
   return (
     isSuccess &&
@@ -18,4 +18,4 @@ function SelectSubtype(props) {
   );
 };
 
-export default SelectSubtype;
+export default SelectAccessCond;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useGetGroupsQuery } from '../../../api/dictionaries/groups';
 import { useGetSubtypesQuery } from '../../../api/dictionaries/subtypes';
-import dateFormater from '../../../common/dateFormatter';
+import dateFormater from '../../../commonFunctions/dateFormatter';
 import Button from '../../CommonComponents/Button/Button';
 import Checkbox from '../../CommonComponents/Inputs/Checkbox/Checkbox';
 import InputDate from '../../CommonComponents/Inputs/InputDate/InputDate';
