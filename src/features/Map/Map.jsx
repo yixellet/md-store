@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Map as olMap, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
@@ -20,11 +20,11 @@ function Map() {
     zIndex: 0,
   });
 
-  const map = new olMap({
+  const [map, setMap] = useState(new olMap({
     controls: [],
     view: view,
     layers: [osmLayer]
-  });
+  }));
 
   useEffect(() => {
     map.setTarget(mapRef.current);

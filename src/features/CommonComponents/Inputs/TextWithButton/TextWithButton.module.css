@@ -32,11 +32,12 @@
 }
 
 .text_input {
-  width: calc(100% - 60px);
+  width: calc(100% - 50px);
+  border: none;
   height: 30px;
-  padding: 0 10px;
-  height: 30px;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: .9rem;
+  padding: 0 5px;
+  margin: 10px 0 0 0;
+  font-weight: 400;
   border: none;
 }

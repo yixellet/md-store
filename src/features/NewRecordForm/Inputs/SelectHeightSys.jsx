@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGetHeightSystemsQuery } from '../../../../api/dictionaries/heightSystems';
-import Select from '../../../CommonComponents/Inputs/Select/Select';
+import { useGetHeightSystemsQuery } from '../../../api/dictionaries/heightSystems';
+import Select from '../../CommonComponents/Inputs/Select/Select';
 
 function SelectHeightSys(props) {
   

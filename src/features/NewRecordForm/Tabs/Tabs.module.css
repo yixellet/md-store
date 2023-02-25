@@ -2,3 +2,28 @@
   overflow-y: scroll;
   padding: 20px 10px;
 }
+
+.two_fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.field_wrapper {
+  width: calc((100% - 20px) / 2);
+}
+
+.buttons_wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.button_wrapper {
+  max-width: calc((100% - 10px) / 2);
+  min-width: 100px;
+  margin-right: 10px;
+}

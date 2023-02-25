@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGetReferenceSystemsQuery } from '../../../../api/dictionaries/referenceSystems';
-import Select from '../../../CommonComponents/Inputs/Select/Select';
+import { useGetReferenceSystemsQuery } from '../../../api/dictionaries/referenceSystems';
+import Select from '../../CommonComponents/Inputs/Select/Select';
 
 function SelectRefSystem(props) {
   

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useGetStorageFormatsQuery } from '../../../../api/dictionaries/storageFormats';
-import Select from '../../../CommonComponents/Inputs/Select/Select';
+import { useGetStorageFormatsQuery } from '../../../api/dictionaries/storageFormats';
+import Select from '../../CommonComponents/Inputs/Select/Select';
 
 function SelectStorageFormat(props) {
   

@@ -7,8 +7,9 @@
 
 .text_input {
   height: 30px;
-  font-size: 16px;
-  padding: 0 10px;
-  font-weight: 700;
+  font-size: .9rem;
+  padding: 0 5px;
+  margin: 10px 0 0 0;
+  font-weight: 400;
   border: none;
 }

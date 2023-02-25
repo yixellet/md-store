@@ -29,9 +29,18 @@ function InputDate(props) {
       <input type='date' name={name} 
               id={name}
               value={value} className={styles.input_date}
-              onChange={event => onChangeFunction(event.target.value)} />
+              onChange={event => onChangeFunction(event)} />
     </div>
   )
+};
+
+InputDate.defaultProps = {
+  label: '<field_name>',
+  showLabel: true,
+  name: 'date',
+  isRequired: false,
+  value: '',
+  onChangeFunction: () => {},
 };
 
 export default InputDate;

@@ -5,7 +5,7 @@ export const documentsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/documents' }),
   endpoints: (builder) => ({
     getDocuments: builder.query({
-      query: () => ``,
+      query: (type) => `${type ? `?type=${type}` : ''}`,
       transformResponse: (responseData) => {
         const byId = responseData.reduce((byId, dictionary) => {
           byId[dictionary.id] = dictionary

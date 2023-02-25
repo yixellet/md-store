@@ -5,20 +5,23 @@ import OSM from "ol/source/OSM";
 import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
 import styles from "./NewRecordFormMap.module.css";
+import { useSelector } from "react-redux";
+import Layer from "./Layer";
 
 function NewRecordFormMap() {
 
   const mapRef = useRef(null);
+  const WKTgeom = useSelector(state => state.newRecord.geometry);
 
   const [view, setView] = useState(new View({
     center: fromLonLat([47.3, 47.15]),
     zoom: 7
   }));
 
-  const osmLayer = new TileLayer({
+  const [osmLayer, setOSMLayer] = useState(new TileLayer({
     source: new OSM(),
     zIndex: 0,
-  });
+  }));
 
   const [map, setMap] = useState(new olMap({
     controls: [],
@@ -32,6 +35,7 @@ function NewRecordFormMap() {
 
   return (
     <div ref={mapRef} className={styles.map} id="formMap">
+      <Layer map={map} />
     </div>
   )
 };

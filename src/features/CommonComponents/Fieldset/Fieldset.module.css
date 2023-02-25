@@ -1,0 +1,9 @@
+.fieldset {
+  border: 1px solid #979797;
+  padding: 15px 10px 0;
+}
+
+.legend {
+  font-family: Roboto;
+  color: #fff;
+}

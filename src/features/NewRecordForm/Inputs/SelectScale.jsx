@@ -1,6 +1,6 @@
 import React from 'react';
-import { useGetScalesQuery } from '../../../../api/dictionaries/scales';
-import Select from '../../../CommonComponents/Inputs/Select/Select';
+import { useGetScalesQuery } from '../../../api/dictionaries/scales';
+import Select from '../../CommonComponents/Inputs/Select/Select';
 
 function SelectScale(props) {
   

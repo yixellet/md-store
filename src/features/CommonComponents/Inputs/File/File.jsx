@@ -1,11 +1,11 @@
 import React from 'react';
-import InputLabel from '../InputLabel/InputLabel';
+import Label from '../Label/Label';
 
-import styles from './InputDate.module.css'
+import styles from './File.module.css'
 
-function InputDate(props) {
+function File(props) {
   /**
-  *  Компонент с инпутом типа "select".
+  *  Компонент с инпутом типа "file".
   * 
   *  @param {string} label подпись поля
   *  @param {bool} showLabel флаг видимости подписи поля
@@ -24,14 +24,23 @@ function InputDate(props) {
     <div className={styles.input_wrapper}>
     {
       showLabel &&
-      <InputLabel name={label} for={name} isRequired={isRequired} />
+      <Label name={label} HTMLfor={name} isRequired={isRequired} />
     }
       <input type='date' name={name} 
               id={name}
-              value={value} className={styles.text_input}
-              onChange={event => onChangeFunction(event.target.value)} />
+              value={value} className={styles.input_date}
+              onChange={event => onChangeFunction(event)} />
     </div>
   )
 };
 
-export default InputDate;
+InputDate.defaultProps = {
+  label: '<field_name>',
+  showLabel: true,
+  name: 'date',
+  isRequired: false,
+  value: '',
+  onChangeFunction: () => {},
+};
+
+export default File;

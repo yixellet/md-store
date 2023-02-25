@@ -29,6 +29,7 @@ const initialState = {
   },
   activeTab: 1,
   geometry: null,
+  geometryError: null,
   geomInputTypes: {
     1: {
       id: 1,
@@ -47,7 +48,7 @@ const initialState = {
       name: 'Каталог координат',
     },
   },
-  activeInputType: 1,
+  activeInputType: '3',
   isPaintingConfirmed: false,
 }
 
@@ -61,6 +62,9 @@ const newRecord = createSlice({
     setGeometry: (state, action) => {
       state.geometry = action.payload;
     },
+    setGeometryError: (state, action) => {
+      state.geometryError = action.payload;
+    },
     setActiveInputType: (state, action) => {
       state.activeInputType = action.payload;
     },
@@ -70,6 +74,6 @@ const newRecord = createSlice({
   }
 });
 
-export const { setActiveTab, setGeometry, setActiveInputType, confirmPainting } = newRecord.actions;
+export const { setActiveTab, setGeometry, setGeometryError, setActiveInputType, confirmPainting } = newRecord.actions;
 
 export default newRecord.reducer;
