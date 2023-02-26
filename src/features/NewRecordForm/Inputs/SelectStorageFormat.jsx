@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useGetStorageFormatsQuery } from '../../../api/dictionaries/storageFormats';
 import Select from '../../CommonComponents/Inputs/Select/Select';
 

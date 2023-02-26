@@ -25,8 +25,7 @@ function TextArea (props) {
       showLabel &&
       <Label name={label} HTMLfor={name} isRequired={isRequired} />
     }
-      <textarea type='text' 
-                name={name} 
+      <textarea name={name} 
                 id={name} 
                 className={styles.text_input}
                 value={value}

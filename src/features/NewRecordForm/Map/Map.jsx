@@ -4,14 +4,12 @@ import TileLayer from "ol/layer/Tile";
 import OSM from "ol/source/OSM";
 import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
-import styles from "./NewRecordFormMap.module.css";
-import { useSelector } from "react-redux";
+import styles from "./Map.module.css";
 import Layer from "./Layer";
 
-function NewRecordFormMap() {
+function Map() {
 
   const mapRef = useRef(null);
-  const WKTgeom = useSelector(state => state.newRecord.geometry);
 
   const [view, setView] = useState(new View({
     center: fromLonLat([47.3, 47.15]),
@@ -40,4 +38,4 @@ function NewRecordFormMap() {
   )
 };
 
-export default NewRecordFormMap;
+export default Map;

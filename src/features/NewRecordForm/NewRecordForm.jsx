@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeNewRecordWindow } from '../../store/reducers/appSlice';
-import { setActiveTab } from '../../store/reducers/newRecord';
+import { setActiveTab, setGeometry } from '../../store/reducers/newRecord';
 import Button from '../CommonComponents/Button/Button';
 import Header from '../CommonComponents/Header/Header';
 import ModalWindow from '../CommonComponents/ModalWindow/ModalWindow';
 import Tabs from '../CommonComponents/Tabs/Tabs';
-import NewRecordFormMap from '../Map/NewRecordFormMap/NewRecordFormMap';
+import DocumentsTable from './Documents/DocumentsTable/DocumentsTable';
+import Map from './Map/Map';
 
 import styles from './NewRecordForm.module.css';
 import Access from './Tabs/Access';
@@ -25,7 +26,6 @@ function NewRecordForm() {
   const group = useSelector(state => state.app.newRecord.type);
   const tabsSet = useSelector(state => state.newRecord.tabs);
   const activeTab = useSelector(state => state.newRecord.activeTab);
-  const geometry = useSelector(state => state.newRecord.geometry);
 
   const setInitialSubtype = (group) => {
   let value;
@@ -69,10 +69,16 @@ function NewRecordForm() {
     case '12':
       value = '37';
       break;
+    default:
+      value = '1';
   };
   return value;
   };
 
+  const [openDocsTable, setOpenDocsTable] = useState(false);
+  const handleOpenDocsTable = () => {
+    setOpenDocsTable(prev => !prev);
+  };
   const [values, setValues] = useState({
     group_ref: group,
     subtype_ref: setInitialSubtype(group),
@@ -126,12 +132,17 @@ function NewRecordForm() {
     panel = <Access values={values} onChangeFunction={handleSetValue} />;
     break;
   case 6:
-    panel = <Docs values={values} onChangeFunction={handleSetValue} />;
+    panel = <Docs values={values} onChangeFunction={handleSetValue} openTableFunction={handleOpenDocsTable} />;
     break;
+  default:
+    panel = <Main values={values} onChangeFunction={handleSetValue} />;
   };
 
   return (
-    <ModalWindow closeFunction={() => {dispatch(closeNewRecordWindow())}}>
+    <ModalWindow closeFunction={() => {
+      dispatch(setGeometry(null));
+      dispatch(closeNewRecordWindow());
+      dispatch(setActiveTab(1));}}>
       <div className={styles.wrapper}>
         <div className={styles.form_wrapper}>
           <div className={styles.header_wrapper}>
@@ -147,12 +158,24 @@ function NewRecordForm() {
                 <Button label='Сохранить' color='green' onClickFunction={(e) => {e.preventDefault()}} />
               </div>
               <div className={styles.button_wrapper}>
-                <Button label='Отменить' color='grey' onClickFunction={() => {dispatch(closeNewRecordWindow())}} />
+                <Button label='Отменить' color='grey' 
+                        onClickFunction={(e) => {
+                          e.preventDefault();
+                          dispatch(setGeometry(null));
+                          dispatch(closeNewRecordWindow());
+                          dispatch(setActiveTab(1));
+                        }} />
               </div>
             </div>
           </form>
         </div>
-        <NewRecordFormMap />
+        <div className={styles.sidepanel}>
+          {
+            openDocsTable &&
+            <DocumentsTable />
+          }
+          <Map />
+        </div>
       </div>
     </ModalWindow>
   )

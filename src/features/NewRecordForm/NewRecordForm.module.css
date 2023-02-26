@@ -46,3 +46,9 @@
   height: 35px;
   margin-left: 20px;
 }
+
+.sidepanel {
+  width: calc((100% - 20px) / 2);
+  height: 757px;
+  position: relative;
+}

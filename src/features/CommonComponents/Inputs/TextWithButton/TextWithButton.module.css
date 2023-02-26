@@ -6,38 +6,35 @@
   width: 100%;
 }
 
-.input_with_button_wrapper {
-  width: 100%;
-}
-
-.plus_button {
-  width: 30px;
-  height: 30px;
-  color: rgb(0, 0, 0);
-  background-color: rgb(181, 212, 41);
-  border: none;
-  font-family: 'Roboto';
-  font-weight: 700;
-  margin-left: 10px;
-}
-
-.plus_button:hover {
-  background-color: rgb(217, 247, 88);
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.562);
-}
-
-.plus_button:active {
-  background-color: rgb(141, 165, 32);
-  box-shadow: none;
-}
-
 .text_input {
-  width: calc(100% - 50px);
+  width: calc(100% - 10px);
   border: none;
-  height: 30px;
+  height: 60px;
   font-size: .9rem;
   padding: 0 5px;
-  margin: 10px 0 0 0;
+  margin-top: 10px;
   font-weight: 400;
   border: none;
+}
+
+.buttons_wrapper {
+  height: 30px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.two_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.button_wrapper {
+  width: 100px;
+}
+
+.button_wrapper:first-of-type {
+  margin-right: 10px;
 }

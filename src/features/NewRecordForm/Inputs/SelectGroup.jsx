@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useGetGroupsQuery } from '../../../../api/dictionaries/groups';
-import Select from '../../../CommonComponents/Inputs/Select/Select';
+import React from 'react';
+import { useGetGroupsQuery } from '../../../api/dictionaries/groups';
+import Select from '../../CommonComponents/Inputs/Select/Select';
 
 function SelectGroup(props) {
   

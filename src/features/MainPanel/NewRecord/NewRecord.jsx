@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { openNewRecordWindow } from '../../../store/reducers/appSlice';
 import Button from '../../CommonComponents/Button/Button';
-import SelectGroup from './Inputs/SelectGroup';
+import SelectGroup from '../../NewRecordForm/Inputs/SelectGroup';
 
 import styles from './NewRecord.module.css'
 

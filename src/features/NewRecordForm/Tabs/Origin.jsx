@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGetFieldsQuery } from '../../../api/metadata/fields';
 import InputDate from '../../CommonComponents/Inputs/InputDate/InputDate';
+import TextWithButton from '../../CommonComponents/Inputs/TextWithButton/TextWithButton';
 import styles from './Tabs.module.css';
 
 function Origin(props) {
@@ -13,6 +14,12 @@ function Origin(props) {
 
   return (
     <div className={styles.fields}>
+      {
+        (fields && Object.keys(fields).includes('18')) &&
+        <TextWithButton label={fields[18].description} name={fields[18].name} 
+                        isRequired={fields[18].mandatory}
+                        value={values[fields[18].name]} onChangeFunction={onChangeFunction} />
+      }
       <div className={styles.two_fields}>
         <div className={styles.field_wrapper}>
           {
@@ -49,6 +56,12 @@ function Origin(props) {
           }
         </div>
       </div>
+      {
+        (fields && Object.keys(fields).includes('17')) &&
+        <TextWithButton label={fields[17].description} name={fields[17].name} 
+                        isRequired={fields[17].mandatory}
+                        value={values[fields[17].name]} onChangeFunction={onChangeFunction} />
+      }
     </div>
   )
 };
