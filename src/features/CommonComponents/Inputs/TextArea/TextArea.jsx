@@ -11,13 +11,14 @@ function TextArea (props) {
   *  @param {string} name имя поля
   *  @param {bool} isRequired флаг обязательности
   *  @param {string} value значение поля
+  *  @param {bool} disabled флаг редактируемого поля
   *  @callback onChangeFunction функция, срабатывающая
   *                                на событие onChange
   */
 
   /** @type {onChangeFunction} */
 
-  const { label, showLabel, name, isRequired, value, onChangeFunction } = props;
+  const { label, showLabel, name, isRequired, value, disabled, onChangeFunction } = props;
   
   return (
     <div className={styles.input_wrapper}>
@@ -29,6 +30,7 @@ function TextArea (props) {
                 id={name} 
                 className={styles.text_input}
                 value={value}
+                disabled={disabled}
                 onChange={(event) => onChangeFunction(event)} />
     </div>
   )
@@ -40,6 +42,7 @@ TextArea.defaultProps = {
   name: 'name',
   isRequired: false,
   value: '<field_value>',
+  disabled: false,
   onChangeFunction: () => {},
 };
 

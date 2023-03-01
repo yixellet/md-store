@@ -25,6 +25,11 @@ function Place(props) {
 
   let geomInputWidget;
   switch (activeInputType) {
+    case '1':
+      geomInputWidget = <TextArea showLabel={false} name='geom' disabled={true}
+                         value={values.geom} isRequired={true}
+                         onChangeFunction={(e) => {onChangeFunction(e)}} />
+      break;
     case '3':
       geomInputWidget = <TextArea showLabel={false} name='geom'
                          value={values.geom} isRequired={true}

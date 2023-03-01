@@ -6,6 +6,7 @@ import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
 import styles from "./Map.module.css";
 import Layer from "./Layer";
+import { useSelector } from "react-redux";
 
 function Map() {
 

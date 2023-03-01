@@ -150,7 +150,7 @@ function NewRecordForm() {
           </div>
           <form className={styles.form}>
             <Tabs tabsSet={tabsSet} activeTab={activeTab} 
-                  setActiveTabFunction={(id) => dispatch(setActiveTab(id))}>
+                  setActiveTabFunction={(id) => {dispatch(setActiveTab(id));setOpenDocsTable(false)}}>
               { panel }
             </Tabs>
             <div className={styles.buttons_wrapper}>
