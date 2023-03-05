@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useCreateRecordMutation } from '../../api/metadata';
 import { closeNewRecordWindow } from '../../store/reducers/appSlice';
 import { setActiveTab, setGeometry } from '../../store/reducers/newRecord';
 import Button from '../CommonComponents/Button/Button';
@@ -85,12 +86,12 @@ function NewRecordForm() {
     storageformat_ref: setInitialStorageFormat(group),
     accesscondition_ref: '2',
     secretclass_ref: '-1',
-    region_ref: 12,
+    region_ref: '',
     extraregioninfo: '',
     scale: '-1',
     minscale: '-1',
     referencesystem_ref: '-1',
-    heightsystem_ref: '1',
+    heightsystem_ref: '',
     nomenclature: '',
     objectquantity: '',
     name: '',
@@ -113,6 +114,8 @@ function NewRecordForm() {
     copy[target.name] = target.value;
     setValues(copy);
   };
+
+  const [createRecord, result] = useCreateRecordMutation();
 
   let panel;
   switch (activeTab) {
@@ -149,13 +152,15 @@ function NewRecordForm() {
             <Header name='Новая запись' />
           </div>
           <form className={styles.form}>
-            <Tabs tabsSet={tabsSet} activeTab={activeTab} 
-                  setActiveTabFunction={(id) => {dispatch(setActiveTab(id));setOpenDocsTable(false)}}>
-              { panel }
-            </Tabs>
+            <div className={styles.tabs_wrapper}>
+              <Tabs tabsSet={tabsSet} activeTab={activeTab} 
+                    setActiveTabFunction={(id) => {dispatch(setActiveTab(id));setOpenDocsTable(false)}}>
+                { panel }
+              </Tabs>
+            </div>
             <div className={styles.buttons_wrapper}>
               <div className={styles.button_wrapper}>
-                <Button label='Сохранить' color='green' onClickFunction={(e) => {e.preventDefault()}} />
+                <Button label='Сохранить' color='green' onClickFunction={(e) => {e.preventDefault();createRecord(values)}} />
               </div>
               <div className={styles.button_wrapper}>
                 <Button label='Отменить' color='grey' 

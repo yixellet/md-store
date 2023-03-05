@@ -10,13 +10,21 @@ export const metadataApi = createApi({
         const byId = responseData.reduce((byId, dictionary) => {
           byId[dictionary.id] = dictionary
           return byId
-        }, {})
-        return byId
+        }, {});
+        return byId;
       },
+    }),
+    createRecord: builder.mutation({
+      query: (values) => ({
+        url: '/',
+        method: 'POST',
+        body: values,
+      }),
     }),
   }),
 });
 
 export const {
-  useGetMetadataQuery
+  useGetMetadataQuery,
+  useCreateRecordMutation
 } = metadataApi;

@@ -26,7 +26,9 @@ function Tabs(props) {
           })
         }
       </ul>
-      { children }
+      <div className={styles.children_wrapper}>
+        { children }
+      </div>
     </div>
   )
 };

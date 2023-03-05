@@ -6,10 +6,10 @@ const regions = dictionariesApi.injectEndpoints({
       query: (district) => `regions${district ? `?district=${district}` : ''}`,
       transformResponse: (responseData) => {
         const byId = responseData.reduce((byId, dictionary) => {
-          byId[dictionary.id] = dictionary
-          return byId
-        }, {})
-        return byId
+          byId[dictionary.id] = dictionary;
+          return byId;
+        }, {});
+        return byId;
       },
     }),
     getRegion: builder.query({

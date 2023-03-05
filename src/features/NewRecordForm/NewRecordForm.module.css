@@ -28,6 +28,10 @@
   justify-content: flex-end;
 }
 
+.tabs_wrapper {
+  height: 663px;
+}
+
 .fields {
   overflow-y: scroll;
   padding: 20px 10px;

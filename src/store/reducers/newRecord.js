@@ -8,11 +8,11 @@ const initialState = {
     },
     2: {
       id: 2,
-      label: 'Происхождение',
+      label: 'Происх-е',
     },
     3: {
       id: 3,
-      label: 'Расположение',
+      label: 'Объект',
     },
     4: {
       id: 4,
