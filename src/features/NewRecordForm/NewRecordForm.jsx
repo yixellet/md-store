@@ -86,7 +86,7 @@ function NewRecordForm() {
     storageformat_ref: setInitialStorageFormat(group),
     accesscondition_ref: '2',
     secretclass_ref: '-1',
-    region_ref: '',
+    region_ref: '12',
     extraregioninfo: '',
     scale: '-1',
     minscale: '-1',
@@ -100,11 +100,11 @@ function NewRecordForm() {
     objectchangedat: '',
     areastatedate: '',
     maxareastatedate: '',
-    creator_ref: '',
-    rightholder_ref: '',
-    location_ref: '',
-    incomingdocguid: '',
-    outgoingdocguid: '',
+    creator: '',
+    rightholder: '',
+    location: '',
+    incomingdoc: '',
+    outgoingdoc: '',
     geom: '',
   });
 
@@ -160,7 +160,7 @@ function NewRecordForm() {
             </div>
             <div className={styles.buttons_wrapper}>
               <div className={styles.button_wrapper}>
-                <Button label='Сохранить' color='green' onClickFunction={(e) => {e.preventDefault();createRecord(values)}} />
+                <Button label='Сохранить' color='green' onClickFunction={(e) => {e.preventDefault();createRecord(values);dispatch(closeNewRecordWindow())}} />
               </div>
               <div className={styles.button_wrapper}>
                 <Button label='Отменить' color='grey' 

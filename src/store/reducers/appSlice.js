@@ -1,21 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  activeTab: 1,
-  tabs: {
-    1: {
-      id: 1,
-      label: 'Фильтры',
-    },
-    2: {
-      id: 2,
-      label: 'Метаданные',
-    },
-    3: {
-      id: 3,
-      label: 'Новая запись',
-    }
-  },
   newRecord: {
     modalWindowIsOpen: false,
     type: null,
@@ -69,15 +54,31 @@ const initialState = {
     },
   },
   selectedCounterparty: null,
+  sortingOptions: {
+    '1': {
+      id: '1',
+      name: 'сначала недавние',
+    },
+    '2': {
+      id: '2',
+      name: 'сначала старые',
+    },
+    '3': {
+      id: '3',
+      name: 'сначала актуальные',
+    },
+    '4': {
+      id: '4',
+      name: 'сначала исторические',
+    },
+  },
+  activeSortingOption: 1
 }
 
 const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    setActiveTab: (state, action) => {
-      state.activeTab = action.payload;
-    },
     setSelectedCounterparty: (state, action) => {
       state.selectedCounterparty = action.payload;
     },
@@ -89,14 +90,17 @@ const appSlice = createSlice({
       state.newRecord.modalWindowIsOpen = false;
       state.newRecord.type = null;
     },
-  }
+    setActiveSortingOption: (state, action) => {
+      state.activeSortingOption = action.payload;
+    },
+  },
 });
 
 export const {
-  setActiveTab,
   setSelectedCounterparty,
   openNewRecordWindow,
-  closeNewRecordWindow
+  closeNewRecordWindow,
+  setActiveSortingOption,
 } = appSlice.actions;
 
 export default appSlice.reducer;

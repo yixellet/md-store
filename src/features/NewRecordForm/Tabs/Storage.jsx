@@ -3,6 +3,7 @@ import { useGetFieldsQuery } from '../../../api/metadata/fields';
 import SelectStorageFormat from '../Inputs/SelectStorageFormat';
 import TextWithButton from '../../CommonComponents/Inputs/TextWithButton/TextWithButton';
 import styles from './Tabs.module.css';
+import TextArea from '../../CommonComponents/Inputs/TextArea/TextArea';
 
 function Storage(props) {
   /**
@@ -15,10 +16,13 @@ function Storage(props) {
   return (
     <div className={styles.fields}>
     {
-      (fields && Object.keys(fields).includes('4')) &&
-      <TextWithButton label={fields[4].description} name={fields[4].name} 
+      (fields && Object.keys(fields).includes('34')) &&
+      <TextArea label={fields[34].description} name={fields[34].name} 
+      isRequired={fields[34].mandatory}
+      value={values[fields[34].name]} onChangeFunction={onChangeFunction} />
+      /*<TextWithButton label={fields[4].description} name={fields[4].name} 
                       isRequired={fields[4].mandatory}
-                      value={values[fields[4].name]} onChangeFunction={onChangeFunction} />
+                      value={values[fields[4].name]} onChangeFunction={onChangeFunction} />*/
     }
     {
       (fields && Object.keys(fields).includes('5')) &&

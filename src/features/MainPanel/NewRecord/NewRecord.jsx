@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { openNewRecordWindow } from '../../../store/reducers/appSlice';
-import Button from '../../CommonComponents/Button/Button';
-import SelectGroup from '../../NewRecordForm/Inputs/SelectGroup';
 
 import styles from './NewRecord.module.css'
 
 function NewRecord() {
 
   const dispatch = useDispatch();
-  const [group, setGroup] = useState(1);
 
-  const selectType = (e) => {
-    setGroup(e.target.value);
-  };
+  return (
+    <div className={styles.new_record_wrapper}>
+      <button className={styles.new_record_button}>+</button>
+    </div>
+  );
 
+  /*
   return (
     <form className={styles.newMdForm}>
       <div className={styles.fields}>
@@ -24,7 +23,7 @@ function NewRecord() {
         <Button label='Создать' onClickFunction={(e) => {e.preventDefault(); dispatch(openNewRecordWindow(group))}} />
       </div>
     </form>
-  );
+  );*/
 };
 
 export default NewRecord;

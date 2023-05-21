@@ -43,6 +43,10 @@ function Filters() {
     setSubtypesChecked(copy);
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+  };
+
   const dateNow = new Date();
   const [startDate, setStartDate] = useState('2021-01-01');
   const [endDate, setEndDate] = useState(dateFormater(dateNow, '-'));
@@ -77,7 +81,7 @@ function Filters() {
         </fieldset>
       </div>
       <div className={styles.button_wrapper}>
-        <Button label='Поиск' />
+        <Button label='Поиск' onClickFunction={handleSearch} />
       </div>
     </form>
   )

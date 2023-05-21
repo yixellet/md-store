@@ -23,3 +23,38 @@
   width: 100%;
   height: calc(100% - 80px);
 }
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filters_button {
+  background-color: #ffffff00;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.filters_svg {
+  fill: #fff;
+  width: 30px;
+  height: 30px;
+}
+
+.list {
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+  list-style-type: none;
+  padding: 0;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-y: scroll;
+}
