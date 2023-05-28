@@ -6,6 +6,7 @@ import styles from './MainPanel.module.css';
 import { setActiveSortingOption } from '../../store/reducers/appSlice';
 import MdListItem from './MdListItem/MdListItem';
 import NewRecord from './NewRecord/NewRecord';
+import { useGetMetadataQuery } from '../../api/metadata';
 
 function MainPanel() {
   /**
@@ -14,6 +15,8 @@ function MainPanel() {
   const dispatch = useDispatch();
   const sortingOptions = useSelector(state => state.app.sortingOptions);
   const activeSortingOption = useSelector(state => state.app.activeSortingOption);
+
+  const { data: metadata, isSuccess, isLoading } = useGetMetadataQuery();
   
   return (
     <div className={styles.tools_container}>
@@ -39,13 +42,12 @@ function MainPanel() {
         </button>
       </div>
       <ul className={styles.list}>
-        <MdListItem />
-        <MdListItem />
-        <MdListItem />
-        <MdListItem />
-        <MdListItem />
-        <MdListItem />
-        <MdListItem />
+        {
+          isSuccess &&
+          Object.values(metadata).map((data) => {
+            return <MdListItem key={data.id} record={data} />
+          })
+        }
       </ul>
     </div>
   )
